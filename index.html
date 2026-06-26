@@ -1,0 +1,1158 @@
+<!--
+  ╔══════════════════════════════════════════════════════════╗
+  ║           VIBE TERAPIAS — Homepage                       ║
+  ║           Clínica Especializada em Dor                   ║
+  ╠══════════════════════════════════════════════════════════╣
+  ║  ASSETS NECESSÁRIOS (manter estrutura de pastas):        ║
+  ║                                                          ║
+  ║  assets/                                                 ║
+  ║  ├── logo-colorida.png   → logo cobre (fundo claro)      ║
+  ║  ├── logo-escura.png     → logo marrom escuro            ║
+  ║  ├── logo-branca.png     → logo branca (fundo escuro)    ║
+  ║  ├── logo-dourada.png    → logo champagne (opcional)     ║
+  ║  ├── hero-mobile.jpg     → foto hero 750×1200px          ║
+  ║  ├── hero-desktop.jpg    → foto hero 1440×900px          ║
+  ║  └── fonts/                                              ║
+  ║      ├── charlotte-veronica.woff2  (extrair do .zip)     ║
+  ║      └── charlotte-veronica.woff   (extrair do .zip)     ║
+  ║                                                          ║
+  ║  PALETA DE CORES EXTRAÍDA DOS LOGOS:                     ║
+  ║  • Cobre primário:   #7D4535                             ║
+  ║  • Marrom escuro:    #4E2518                             ║
+  ║  • Champagne/ouro:   #C9B87A                             ║
+  ║  • Blush claro:      #F5EBE6                             ║
+  ║                                                          ║
+  ║  NÚMERO WHATSAPP: substituir 55XXXXXXXXXXX               ║
+  ╚══════════════════════════════════════════════════════════╝
+-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibe Terapias — Clínica Especializada em Dor</title>
+  <meta name="description" content="Não somos um SPA. Somos a solução para as suas dores. Tratamentos terapêuticos especializados em bruxismo, fibromialgia, coluna, pilates e mais. 8 unidades em SP, PR e SC.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    @font-face {
+      font-family: 'CharlotteVeronica';
+      src: url('assets/fonts/charlotte-veronica.woff2') format('woff2'),
+           url('assets/fonts/charlotte-veronica.woff')  format('woff');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --primary:       #7D4535;
+      --primary-dark:  #4E2518;
+      --primary-light: #F5EBE6;
+      --accent:        #C9B87A;
+      --accent-light:  #F7F2E4;
+      --text-dark:     #2A1409;
+      --text-medium:   #6B4035;
+      --text-light:    #9C7A6C;
+      --white:         #FFFFFF;
+      --bg:            #FAF7F4;
+      --border:        #E8D5CC;
+      --shadow:        0 4px 24px rgba(125,69,53,0.10);
+      --shadow-lg:     0 8px 48px rgba(125,69,53,0.15);
+      --radius:        16px;
+      --font-display:  'CharlotteVeronica', 'Poppins', Georgia, serif;
+      --font-heading:  'Poppins', system-ui, sans-serif;
+      --font-body:     'Poppins', system-ui, sans-serif;
+      --whatsapp:      #25D366;
+      --whatsapp-dark: #1DA851;
+      --space-section: 56px;
+      --space-container: 20px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    ::selection { background: var(--primary-light); color: var(--primary-dark); }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    .container { width: 100%; padding: 0 var(--space-container); margin: 0 auto; }
+    .section { padding: var(--space-section) 0; }
+    .text-center { text-align: center; }
+
+    .section-label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .section-label::before { content: '—  '; opacity: 0.6; }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      font-weight: 400;
+      color: var(--text-dark);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 0.975rem;
+      color: var(--text-medium);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* ── BOTÕES ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 52px;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      white-space: nowrap;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn-primary {
+      background: var(--whatsapp);
+      color: white;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.30);
+    }
+    .btn-primary:active { background: var(--whatsapp-dark); transform: scale(0.98); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    .btn-secondary:active { background: var(--primary); color: white; }
+    .btn-outline-white {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.45);
+    }
+    .btn-outline-white:active { background: rgba(255,255,255,0.1); }
+    .btn-white { background: white; color: var(--primary-dark); }
+    .icon-wpp { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
+
+    /* ── HEADER ── */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    .header.scrolled { box-shadow: 0 2px 20px rgba(125,69,53,0.10); }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .logo { display: flex; align-items: center; height: 40px; }
+    .logo img { height: 100%; width: auto; display: block; }
+    .nav { display: none; }
+    .header-cta-desktop { display: none; }
+    .hamburger {
+      display: flex; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 10px;
+      background: none; border: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--primary); border-radius: 2px; transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile {
+      display: none; flex-direction: column;
+      position: fixed; top: 64px; left: 0; right: 0;
+      background: white;
+      padding: 20px var(--space-container) 28px;
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 8px 24px rgba(125,69,53,0.10);
+      z-index: 99; gap: 4px;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      font-size: 1rem; font-weight: 500; color: var(--text-medium);
+      padding: 13px 0; border-bottom: 1px solid var(--border); display: block;
+    }
+    .nav-mobile a:last-child { border-bottom: none; }
+    .nav-mobile .btn { margin-top: 16px; width: 100%; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100svh;
+      display: flex; align-items: flex-end;
+      padding-top: 64px; padding-bottom: 40px;
+      position: relative; overflow: hidden;
+      background: var(--primary-dark);
+    }
+    .hero-bg-img {
+      position: absolute; inset: 0;
+      background-image: url('assets/hero-mobile.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      z-index: 0;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(78,37,24,0.35) 0%, rgba(78,37,24,0.72) 45%, rgba(42,20,9,0.97) 100%);
+      z-index: 1;
+    }
+    .hero-bg-color {
+      position: absolute; inset: 0;
+      background: linear-gradient(140deg, #2A1409 0%, #4E2518 50%, #7D4535 100%);
+      z-index: -1;
+    }
+    .hero-content { position: relative; z-index: 2; width: 100%; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(201,184,122,0.16);
+      border: 1px solid rgba(201,184,122,0.35);
+      color: var(--accent);
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 6px 14px;
+      border-radius: 50px; margin-bottom: 20px;
+    }
+    .hero-badge::before {
+      content: ''; width: 5px; height: 5px;
+      background: var(--accent); border-radius: 50%; flex-shrink: 0;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 2.15rem; font-weight: 400;
+      color: white; line-height: 1.14; margin-bottom: 14px;
+    }
+    .hero-title .highlight { color: var(--accent); font-style: italic; }
+    .hero-tagline {
+      font-family: var(--font-display);
+      font-size: 1.25rem; font-style: italic;
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 20px; line-height: 1.4;
+    }
+    .hero-sub {
+      font-size: 0.9rem; color: rgba(255,255,255,0.60);
+      line-height: 1.75; margin-bottom: 28px;
+    }
+    .hero-ctas { display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; }
+    .hero-ctas .btn { width: 100%; }
+    .hero-stats {
+      display: flex; align-items: center; gap: 0;
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.12);
+      flex-wrap: nowrap;
+    }
+    .hero-stat { flex: 1; text-align: center; }
+    .hero-stat-num {
+      font-family: var(--font-display);
+      font-size: 1.5rem; font-weight: 400; color: white; line-height: 1;
+    }
+    .hero-stat-label { font-size: 0.7rem; color: rgba(255,255,255,0.50); margin-top: 3px; line-height: 1.3; }
+    .hero-stat-divider { width: 1px; height: 32px; background: rgba(255,255,255,0.15); flex-shrink: 0; }
+
+    /* ── MARQUEE ── */
+    .marquee-bar {
+      background: var(--primary-dark);
+      border-top: 1px solid rgba(201,184,122,0.20);
+      border-bottom: 1px solid rgba(201,184,122,0.20);
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      animation: marquee-scroll 22s linear infinite;
+      will-change: transform;
+    }
+    .marquee-bar:hover .marquee-track { animation-play-state: paused; }
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+      padding: 0 32px;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 400;
+    }
+    .marquee-sep {
+      display: inline-block;
+      width: 5px; height: 5px;
+      background: rgba(201,184,122,0.45);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    @keyframes marquee-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── TRATAMENTOS ── */
+    .tratamentos { background: var(--bg); }
+    .tratamentos-header { margin-bottom: 28px; }
+    .tratamentos-header .btn { margin-top: 20px; width: 100%; }
+    .tratamentos-grid { display: flex; flex-direction: column; gap: 18px; }
+    .trat-card {
+      background: white; border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow); display: flex; flex-direction: row; align-items: stretch;
+    }
+    .trat-img {
+      width: 90px; flex-shrink: 0;
+      background: var(--primary-light);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .trat-img img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+    .trat-img-icon {
+      display: flex; align-items: center; justify-content: center;
+      width: 100%; height: 100%; min-height: 90px;
+      color: var(--primary);
+    }
+    .trat-img-icon svg { width: 36px; height: 36px; stroke: var(--primary); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .trat-tag {
+      position: absolute; top: 8px; left: 0; right: 0; text-align: center;
+      background: var(--accent); color: var(--primary-dark);
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; padding: 3px 0;
+    }
+    .trat-body { padding: 16px; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .trat-title { font-family: var(--font-display); font-size: 1rem; font-weight: 400; color: var(--text-dark); margin-bottom: 5px; }
+    .trat-text { font-size: 0.8rem; color: var(--text-medium); line-height: 1.55; margin-bottom: 10px; font-weight: 300; }
+    .trat-link {
+      font-size: 0.82rem; font-weight: 600; color: var(--primary);
+      display: inline-flex; align-items: center; gap: 4px;
+      text-decoration: none; min-height: 32px;
+    }
+
+    /* ── DIFERENCIAL ── */
+    .diferencial { background: var(--primary-dark); color: white; }
+    .diferencial .section-title { color: white; font-family: var(--font-display); }
+    .diferencial .section-sub   { color: rgba(255,255,255,0.65); }
+    .diferencial .section-label { color: var(--accent); }
+    .diferencial-grid { display: flex; flex-direction: column; gap: 36px; }
+    .diferencial-visual {
+      order: -1; border-radius: var(--radius); overflow: hidden;
+      height: 220px; background: rgba(255,255,255,0.07);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .diferencial-visual img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+    .dif-badge {
+      position: absolute; bottom: 14px; left: 14px;
+      background: white; border-radius: 12px; padding: 10px 14px;
+      display: flex; align-items: center; gap: 10px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    .dif-badge-icon { color: var(--accent); display: flex; align-items: center; }
+    .dif-badge-icon svg { width: 22px; height: 22px; stroke: var(--accent); fill: none; stroke-width: 1.5; }
+    .dif-badge-num { font-weight: 700; font-size: 0.95rem; color: var(--primary-dark); line-height: 1; }
+    .dif-badge-sub { font-size: 0.72rem; color: var(--text-medium); margin-top: 2px; }
+    .diferencial-list { display: flex; flex-direction: column; gap: 24px; }
+    .diferencial-item { display: flex; gap: 14px; align-items: flex-start; }
+    .dif-icon {
+      width: 42px; height: 42px;
+      background: rgba(201,184,122,0.12); border: 1px solid rgba(201,184,122,0.25);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .dif-icon svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .dif-title { font-weight: 600; font-size: 0.92rem; color: white; margin-bottom: 4px; }
+    .dif-text { font-size: 0.84rem; color: rgba(255,255,255,0.58); line-height: 1.6; }
+
+    /* ── NÚMEROS ── */
+    .numeros { background: var(--primary-light); padding: 52px 0; }
+    .numeros-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; text-align: center; }
+    .num-value {
+      font-family: var(--font-display);
+      font-size: 2.6rem; font-weight: 400;
+      color: var(--primary-dark); line-height: 1; margin-bottom: 6px;
+    }
+    .num-label { font-size: 0.82rem; color: var(--text-medium); font-weight: 400; }
+
+    /* ── DEPOIMENTOS ── */
+    .depoimentos { background: var(--white); }
+    .dep-scroll-wrap {
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      display: flex; gap: 14px; padding-bottom: 16px; margin-top: 28px;
+      margin-left: calc(-1 * var(--space-container));
+      margin-right: calc(-1 * var(--space-container));
+      padding-left: var(--space-container);
+      padding-right: var(--space-container);
+      scrollbar-width: none;
+    }
+    .dep-scroll-wrap::-webkit-scrollbar { display: none; }
+    .dep-card {
+      background: var(--bg); border-radius: var(--radius); padding: 24px 20px;
+      flex: 0 0 82vw; max-width: 320px; scroll-snap-align: start;
+    }
+    .dep-card-dark { background: var(--primary-dark); }
+    .dep-dots { display: flex; justify-content: center; gap: 6px; margin-top: 16px; }
+    .dep-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); transition: background 0.2s; }
+    .dep-dot.active { background: var(--primary); }
+    .dep-stars { display: flex; gap: 3px; margin-bottom: 14px; }
+    .dep-star { color: var(--accent); font-size: 0.95rem; }
+    .dep-quote { font-size: 0.88rem; color: var(--text-medium); line-height: 1.72; margin-bottom: 18px; font-style: italic; }
+    .dep-card-dark .dep-quote { color: rgba(255,255,255,0.78); }
+    .dep-author { display: flex; align-items: center; gap: 10px; }
+    .dep-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--primary-light); border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; flex-shrink: 0;
+    }
+    .dep-avatar svg { width: 22px; height: 22px; stroke: var(--primary); fill: none; stroke-width: 1.5; }
+    .dep-card-dark .dep-avatar { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.18); }
+    .dep-card-dark .dep-avatar svg { stroke: rgba(255,255,255,0.7); }
+    .dep-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .dep-name { font-weight: 600; font-size: 0.88rem; color: var(--text-dark); }
+    .dep-card-dark .dep-name { color: white; }
+    .dep-meta { font-size: 0.75rem; color: var(--text-light); margin-top: 2px; }
+    .dep-card-dark .dep-meta { color: rgba(255,255,255,0.48); }
+    .dep-google { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 20px; font-size: 0.85rem; color: var(--text-medium); }
+    .dep-google-stars { color: #FBBC04; }
+
+    /* ── EQUIPE ── */
+    .equipe { background: var(--bg); }
+    .equipe-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; }
+    .eq-card { background: white; border-radius: var(--radius); overflow: hidden; text-align: center; box-shadow: var(--shadow); }
+    .eq-photo { height: 140px; background: var(--primary-light); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .eq-photo svg { width: 52px; height: 52px; stroke: var(--primary); fill: none; stroke-width: 1.2; }
+    .eq-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .eq-body { padding: 14px 10px 18px; }
+    .eq-name { font-family: var(--font-display); font-size: 0.92rem; font-weight: 400; color: var(--text-dark); margin-bottom: 3px; }
+    .eq-role { font-size: 0.75rem; color: var(--primary); font-weight: 500; margin-bottom: 5px; }
+    .eq-cred { font-size: 0.7rem; color: var(--text-light); line-height: 1.5; }
+
+    /* ── UNIDADES ── */
+    .unidades { background: var(--white); }
+    .unidades-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 28px; }
+    .un-card {
+      border: 1.5px solid var(--border); border-radius: var(--radius);
+      padding: 18px 16px; display: flex; align-items: center; gap: 14px;
+      transition: all 0.2s; -webkit-tap-highlight-color: transparent;
+    }
+    .un-card:active { border-color: var(--primary); background: var(--primary-light); }
+    .un-icon { flex-shrink: 0; color: var(--primary); }
+    .un-icon svg { width: 22px; height: 22px; stroke: var(--primary); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .un-info { flex: 1; }
+    .un-city { font-weight: 700; font-size: 0.85rem; color: var(--text-dark); }
+    .un-bairro { font-size: 0.78rem; color: var(--primary); font-weight: 600; }
+    .un-address { font-size: 0.75rem; color: var(--text-light); line-height: 1.45; margin-top: 2px; }
+    .un-link {
+      display: flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--primary-light); color: var(--primary);
+      flex-shrink: 0; text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .un-link svg { width: 18px; height: 18px; stroke: var(--primary); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .un-link:active { background: var(--primary); }
+    .un-link:active svg { stroke: white; }
+
+    /* ── CTA FINAL ── */
+    .cta-final {
+      background: linear-gradient(160deg, #2A1409 0%, var(--primary-dark) 50%, var(--primary) 100%);
+      padding: var(--space-section) 0; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-final::after {
+      content: ''; position: absolute; bottom: -20%; right: -10%;
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(201,184,122,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-final-content { position: relative; z-index: 1; }
+    .cta-final .section-label { color: var(--accent); }
+    .cta-final .section-title { color: white; }
+    .cta-final .section-sub { color: rgba(255,255,255,0.68); margin: 0 auto 28px; }
+    .cta-urgency {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,0.09); border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.88); font-size: 0.8rem;
+      padding: 7px 16px; border-radius: 50px; margin-bottom: 24px;
+    }
+    .cta-urgency svg { width: 14px; height: 14px; stroke: rgba(255,255,255,0.88); fill: none; stroke-width: 1.5; flex-shrink: 0; }
+    .cta-btns { display: flex; flex-direction: column; gap: 12px; }
+    .cta-btns .btn { width: 100%; }
+
+    /* ── FOOTER ── */
+    .footer { background: #1C0C06; color: rgba(255,255,255,0.55); padding: 52px 0 28px; }
+    .footer-grid { display: flex; flex-direction: column; gap: 32px; margin-bottom: 36px; }
+    .footer-logo { display: block; margin-bottom: 12px; }
+    .footer-logo img { height: 44px; width: auto; }
+    .footer-desc { font-size: 0.84rem; line-height: 1.72; margin-bottom: 18px; font-style: italic; }
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social a {
+      width: 38px; height: 38px; border-radius: 8px;
+      background: rgba(255,255,255,0.07);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; -webkit-tap-highlight-color: transparent;
+    }
+    .footer-social a svg { width: 18px; height: 18px; stroke: rgba(255,255,255,0.6); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .footer-social a:active { background: var(--primary); }
+    .footer-col-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 12px; }
+    .footer-links { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; }
+    .footer-links a { font-size: 0.84rem; color: rgba(255,255,255,0.58); text-decoration: none; padding: 4px 0; min-height: 32px; display: flex; align-items: center; }
+    .footer-links a:active { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 20px; display: flex; flex-direction: column; gap: 6px; text-align: center; font-size: 0.78rem; }
+
+    /* ── WHATSAPP FLUTUANTE ── */
+    .float-wpp {
+      position: fixed; bottom: 22px; right: 18px;
+      width: 62px; height: 62px; background: var(--whatsapp);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 24px rgba(37,211,102,0.50); z-index: 98;
+      transition: transform 0.2s; animation: pulse-wpp 2.8s infinite;
+      text-decoration: none; -webkit-tap-highlight-color: transparent;
+    }
+    .float-wpp:active { transform: scale(0.93); }
+    .float-wpp svg { width: 30px; height: 30px; fill: white; }
+    @keyframes pulse-wpp {
+      0%, 100% { box-shadow: 0 4px 24px rgba(37,211,102,0.50); }
+      50%       { box-shadow: 0 4px 40px rgba(37,211,102,0.70), 0 0 0 10px rgba(37,211,102,0.08); }
+    }
+
+    /* ════════════════════════════════════
+       TABLET  ≥ 640px
+    ════════════════════════════════════ */
+    @media (min-width: 640px) {
+      :root { --space-section: 72px; --space-container: 32px; }
+      .section-title { font-size: 2.2rem; }
+      .header-inner { height: 68px; }
+      .header-cta-desktop { display: flex; }
+      .hero { align-items: center; padding-bottom: 56px; }
+      .hero-bg-img { background-image: url('assets/hero-desktop.jpg'); }
+      .hero-title { font-size: 2.8rem; }
+      .hero-tagline { font-size: 1.4rem; }
+      .hero-ctas { flex-direction: row; }
+      .hero-ctas .btn { width: auto; }
+      .tratamentos-grid { display: grid; grid-template-columns: 1fr 1fr; }
+      .trat-card { flex-direction: column; }
+      .trat-img { width: 100%; height: 160px; }
+      .trat-img-icon { min-height: 160px; }
+      .trat-tag { top: 10px; left: 10px; right: auto; text-align: left; padding: 3px 10px; border-radius: 50px; }
+      .trat-body { padding: 18px 20px; }
+      .tratamentos-header .btn { width: auto; }
+      .dep-card { flex: 0 0 60vw; }
+      .unidades-grid { grid-template-columns: 1fr 1fr; }
+      .num-value { font-size: 3rem; }
+      .cta-btns { flex-direction: row; justify-content: center; }
+      .cta-btns .btn { width: auto; }
+      .footer-grid { display: grid; grid-template-columns: 1fr 1fr; }
+      .diferencial-visual { height: 300px; }
+    }
+
+    /* ════════════════════════════════════
+       DESKTOP  ≥ 1024px
+    ════════════════════════════════════ */
+    @media (min-width: 1024px) {
+      :root { --space-section: 96px; --space-container: 24px; }
+      .container { max-width: 1200px; }
+      .section-title { font-size: 2.8rem; }
+      .header-inner { height: 72px; }
+      .logo { height: 46px; }
+      .nav {
+        display: flex; align-items: center; gap: 28px;
+      }
+      .nav a {
+        font-size: 0.875rem; font-weight: 500; color: var(--text-medium);
+        transition: color 0.2s; position: relative;
+      }
+      .nav a::after {
+        content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
+        height: 2px; background: var(--primary);
+        transform: scaleX(0); transition: transform 0.2s ease;
+      }
+      .nav a:hover { color: var(--primary); }
+      .nav a:hover::after { transform: scaleX(1); }
+      .hamburger { display: none; }
+      .hero { align-items: center; padding-bottom: 72px; }
+      .hero-content { max-width: 660px; }
+      .hero-title { font-size: 3.8rem; }
+      .hero-tagline { font-size: 1.6rem; }
+      .hero-sub { font-size: 1rem; }
+      .hero-stat-num { font-size: 1.9rem; }
+      .diferencial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+      .diferencial-visual { order: 0; height: auto; aspect-ratio: 4/5; }
+      .tratamentos-grid { grid-template-columns: repeat(3, 1fr); }
+      .trat-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+      .trat-img { height: 170px; }
+      .trat-img-icon { min-height: 170px; }
+      .numeros-grid { grid-template-columns: repeat(4, 1fr); }
+      .num-value { font-size: 3.5rem; }
+      .dep-scroll-wrap { overflow: visible; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin: 0; padding: 0; margin-top: 48px; }
+      .dep-card { flex: none; max-width: none; scroll-snap-align: none; transition: box-shadow 0.3s; }
+      .dep-card:hover { box-shadow: var(--shadow); }
+      .dep-dots { display: none; }
+      .equipe-grid { grid-template-columns: repeat(4, 1fr); }
+      .eq-photo { height: 200px; }
+      .eq-card:hover { transform: translateY(-4px); }
+      .unidades-grid { grid-template-columns: repeat(4, 1fr); }
+      .un-card { flex-direction: column; align-items: flex-start; gap: 0; }
+      .un-card:hover { border-color: var(--primary); background: var(--primary-light); }
+      .un-icon { margin-bottom: 10px; }
+      .un-link { width: auto; height: auto; border-radius: 0; background: none; font-size: 0.78rem; font-weight: 600; margin-top: 12px; padding: 0; gap: 4px; display: inline-flex; }
+      .un-link svg { stroke: var(--primary); }
+      .un-link:active svg { stroke: var(--primary); }
+      .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+      .footer-links { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: row; text-align: left; }
+      .float-wpp { width: 58px; height: 58px; bottom: 28px; right: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- WHATSAPP FLUTUANTE -->
+  <a href="https://wa.me/55XXXXXXXXXXX?text=Olá!%20Gostaria%20de%20agendar%20uma%20sessão%20na%20Vibe%20Terapias."
+     class="float-wpp" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+  </a>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="/" class="logo" aria-label="Vibe Terapias — Clínica Especializada em Dor">
+          <img src="assets/logo-colorida.png" alt="Vibe Terapias" width="140" height="40">
+        </a>
+        <nav class="nav">
+          <a href="#tratamentos">Tratamentos</a>
+          <a href="#equipe">Nossa Equipe</a>
+          <a href="#depoimentos">Depoimentos</a>
+          <a href="#unidades">Unidades</a>
+        </nav>
+        <a href="https://wa.me/55XXXXXXXXXXX?text=Olá!%20Gostaria%20de%20agendar%20uma%20sessão."
+           class="btn btn-primary header-cta-desktop" target="_blank" rel="noopener">
+          <svg class="icon-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Agendar sessão
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="nav-mobile">
+      <a href="#tratamentos">Tratamentos</a>
+      <a href="#equipe">Nossa Equipe</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#unidades">Unidades</a>
+      <a href="https://wa.me/55XXXXXXXXXXX?text=Olá!%20Quero%20agendar%20minha%20sessão."
+         class="btn btn-primary" target="_blank" rel="noopener">
+        <svg class="icon-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Agendar minha sessão
+      </a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-color"></div>
+    <div class="hero-bg-img" role="img" aria-label="Ambiente terapêutico Vibe Terapias"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">Clínica Especializada em Dor</div>
+        <h1 class="hero-title">
+          Não somos um SPA.<br>
+          Somos a <span class="highlight">solução</span><br>
+          para as suas dores.
+        </h1>
+        <p class="hero-tagline">Mas você relaxa como em um spa.</p>
+        <p class="hero-sub">Tratamentos terapêuticos especializados para bruxismo, fibromialgia, dor na coluna e muito mais. 8 unidades em São Paulo, Londrina e Balneário Camboriú.</p>
+        <div class="hero-ctas">
+          <a href="https://wa.me/55XXXXXXXXXXX?text=Olá!%20Quero%20agendar%20minha%20sessão%20na%20Vibe%20Terapias."
+             class="btn btn-primary" target="_blank" rel="noopener">
+            <svg class="icon-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Agendar minha sessão
+          </a>
+          <a href="#tratamentos" class="btn btn-outline-white">Ver tratamentos →</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="hero-stat-num">+45 mil</div><div class="hero-stat-label">Atendimentos realizados</div></div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat"><div class="hero-stat-num">8</div><div class="hero-stat-label">Unidades SP | PR | SC</div></div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat"><div class="hero-stat-num">4.9 ★</div><div class="hero-stat-label">Google</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-bar" aria-hidden="true">
+    <div class="marquee-track">
+      <!-- set duplicado para loop infinito sem salto -->
+      <span class="marquee-item">Clínica Especializada em Dor<span class="marquee-sep"></span></span>
+      <span class="marquee-item">Clínica Especializada em Dor<span class="marquee-sep"></span></span>
+      <span class="marquee-item">Clínica Especializada em Dor<span class="marquee-sep"></span></span>
+      <span class="marquee-item">Clínica Especializada em Dor<span class="marquee-sep"></span></span>
+      <span class="marquee-item">Clínica Especializada em Dor<span class="marquee-sep"></span></span>
+      <span class="marquee-item">Clínica Especializada em Dor<span class="marquee-sep"></span></span>
+      <span class="marquee-item">Clínica Especializada em Dor<span class="marquee-sep"></span></span>
+      <span class="marquee-item">Clínica Especializada em Dor<span class="marquee-sep"></span></span>
+      <!-- duplicado para continuidade -->
+      <span class="marquee-item">Clínica Especializada em Dor<span class="marquee-sep"></span></span>
+      <span class="marquee-item">Clínica Especializada em Dor<span class="marquee-sep"></span></span>
+      <span class="marquee-item">Clínica Especializada em Dor<span class="marquee-sep"></span></span>
+      <span class="marquee-item">Clínica Especializada em Dor<span class="marquee-sep"></span></span>
+      <span class="marquee-item">Clínica Especializada em Dor<span class="marquee-sep"></span></span>
+      <span class="marquee-item">Clínica Especializada em Dor<span class="marquee-sep"></span></span>
+      <span class="marquee-item">Clínica Especializada em Dor<span class="marquee-sep"></span></span>
+      <span class="marquee-item">Clínica Especializada em Dor<span class="marquee-sep"></span></span>
+    </div>
+  </div>
+
+  <!-- TRATAMENTOS -->
+  <section class="tratamentos section" id="tratamentos">
+    <div class="container">
+      <div class="tratamentos-header">
+        <span class="section-label">Nossos tratamentos</span>
+        <h2 class="section-title">Para cada dor,<br>uma solução precisa</h2>
+        <a href="https://wa.me/55XXXXXXXXXXX?text=Olá!%20Quero%20conhecer%20todos%20os%20tratamentos."
+           class="btn btn-secondary" target="_blank" rel="noopener">Ver todos os tratamentos →</a>
+      </div>
+      <div class="tratamentos-grid">
+        <div class="trat-card">
+          <div class="trat-img">
+            <div class="trat-img-icon">
+              <!-- ícone: dente / mandíbula -->
+              <svg viewBox="0 0 24 24"><path d="M12 2C9.5 2 7 4 7 7c0 1.5.5 3 1 4.5C8.5 13.5 9 16 9 18c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2 0-2 .5-4.5 1-6.5.5-1.5 1-3 1-4.5C17 4 14.5 2 12 2z"/><path d="M9 7h6"/></svg>
+            </div>
+            <span class="trat-tag">Mais pedido</span>
+          </div>
+          <div class="trat-body">
+            <div class="trat-title">Bruxismo</div>
+            <p class="trat-text">Alivia a tensão na mandíbula, dores de cabeça e protege seus dentes do desgaste noturno.</p>
+            <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20saber%20sobre%20tratamento%20de%20bruxismo" class="trat-link" target="_blank">Quero esse tratamento →</a>
+          </div>
+        </div>
+        <div class="trat-card">
+          <div class="trat-img">
+            <div class="trat-img-icon">
+              <!-- ícone: ondas de dor / corpo -->
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M12 7v4m0 0l-3 5m3-5l3 5M9 16l-2 4m8-4l2 4"/><path d="M6 12c1-1 2-1.5 3-1"/><path d="M18 12c-1-1-2-1.5-3-1"/></svg>
+            </div>
+          </div>
+          <div class="trat-body">
+            <div class="trat-title">Fibromialgia</div>
+            <p class="trat-text">Protocolo específico para reduzir dores generalizadas, fadiga e melhorar a qualidade de vida.</p>
+            <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20saber%20sobre%20tratamento%20de%20fibromialgia" class="trat-link" target="_blank">Quero esse tratamento →</a>
+          </div>
+        </div>
+        <div class="trat-card">
+          <div class="trat-img">
+            <div class="trat-img-icon">
+              <!-- ícone: pilates / equilíbrio -->
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="4" r="1.5"/><path d="M12 6v5"/><path d="M8 10l4 2 4-2"/><path d="M10 17l2-5 2 5"/><path d="M8 22h8"/></svg>
+            </div>
+          </div>
+          <div class="trat-body">
+            <div class="trat-title">Pilates Terapêutico</div>
+            <p class="trat-text">Fortalecimento, correção postural e reabilitação com supervisão especializada.</p>
+            <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20saber%20sobre%20pilates%20terapêutico" class="trat-link" target="_blank">Quero esse tratamento →</a>
+          </div>
+        </div>
+        <div class="trat-card">
+          <div class="trat-img">
+            <div class="trat-img-icon">
+              <!-- ícone: coluna vertebral -->
+              <svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="4" rx="1"/><rect x="9" y="7" width="6" height="4" rx="1"/><rect x="9" y="12" width="6" height="4" rx="1"/><rect x="9" y="17" width="6" height="4" rx="1"/><path d="M12 2v20"/></svg>
+            </div>
+          </div>
+          <div class="trat-body">
+            <div class="trat-title">Coluna Sem Dor</div>
+            <p class="trat-text">Para dores lombares, cervicais e torácicas. Da hérnia à tensão do dia a dia.</p>
+            <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20saber%20sobre%20coluna%20sem%20dor" class="trat-link" target="_blank">Quero esse tratamento →</a>
+          </div>
+        </div>
+        <div class="trat-card">
+          <div class="trat-img">
+            <div class="trat-img-icon">
+              <!-- ícone: pernas / circulação -->
+              <svg viewBox="0 0 24 24"><path d="M10 3h4v10l3 8H7l3-8V3z"/><path d="M9 13h6"/></svg>
+            </div>
+          </div>
+          <div class="trat-body">
+            <div class="trat-title">Pés e Pernas Relax</div>
+            <p class="trat-text">Alívio para cansaço, inchaço e dores — especial para quem passa o dia em pé.</p>
+            <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20saber%20sobre%20pés%20e%20pernas%20relax" class="trat-link" target="_blank">Quero esse tratamento →</a>
+          </div>
+        </div>
+        <div class="trat-card">
+          <div class="trat-img">
+            <div class="trat-img-icon">
+              <!-- ícone: cabeça / cérebro / pescoço -->
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 12v3"/><path d="M9 15h6"/><path d="M10 18c0 2 4 2 4 0"/><path d="M8 8c-.5-1-1-2.5 0-3.5S11 4 12 4"/></svg>
+            </div>
+          </div>
+          <div class="trat-body">
+            <div class="trat-title">Pescoço e Crânio Relax</div>
+            <p class="trat-text">Tensão cervical, enxaqueca de tensão e rigidez no pescoço.</p>
+            <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20saber%20sobre%20pescoço%20e%20crânio%20relax" class="trat-link" target="_blank">Quero esse tratamento →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAL -->
+  <section class="diferencial section">
+    <div class="container">
+      <div class="diferencial-grid">
+        <div class="diferencial-visual">
+          <div class="dif-badge">
+            <div class="dif-badge-icon">
+              <!-- ícone: estrela -->
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div><div class="dif-badge-num">4.9 / 5.0</div><div class="dif-badge-sub">Avaliação Google</div></div>
+          </div>
+        </div>
+        <div>
+          <span class="section-label">Por que a Vibe?</span>
+          <h2 class="section-title">Resultado terapêutico.<br>Experiência de spa.</h2>
+          <p class="section-sub">Aqui não é relaxamento por relaxamento. É tratamento com método, técnica e profissionais que entendem a sua dor.</p>
+          <div class="diferencial-list" style="margin-top:28px;">
+            <div class="diferencial-item">
+              <div class="dif-icon">
+                <!-- ícone: alvo / precisão -->
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              </div>
+              <div><div class="dif-title">Tratamento focado na causa, não no sintoma</div><div class="dif-text">Protocolo terapêutico personalizado, não massagem aleatória.</div></div>
+            </div>
+            <div class="diferencial-item">
+              <div class="dif-icon">
+                <!-- ícone: certificado / medalha -->
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M9 14l-3 8 6-3 6 3-3-8"/></svg>
+              </div>
+              <div><div class="dif-title">Profissionais certificados e especializados</div><div class="dif-text">Formação técnica específica nas condições que tratamos.</div></div>
+            </div>
+            <div class="diferencial-item">
+              <div class="dif-icon">
+                <!-- ícone: folha / bem-estar -->
+                <svg viewBox="0 0 24 24"><path d="M21 3C21 3 14 5 12 12C10 5 3 3 3 3C3 3 3 14 12 18C21 14 21 3 21 3Z"/><path d="M12 18v4"/></svg>
+              </div>
+              <div><div class="dif-title">Ambiente que cuida do corpo e da mente</div><div class="dif-text">Você sai tratado e renovado — não só "relaxado".</div></div>
+            </div>
+            <div class="diferencial-item">
+              <div class="dif-icon">
+                <!-- ícone: pin / localização -->
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div><div class="dif-title">8 unidades — SP, PR e SC</div><div class="dif-text">Alphaville, Campinas, Jardins, Pinheiros, Av. Paulista, Moema, Londrina e Balneário Camboriú.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NÚMEROS -->
+  <section class="numeros">
+    <div class="container">
+      <div class="numeros-grid">
+        <div><div class="num-value">+45 mil</div><div class="num-label">Atendimentos realizados</div></div>
+        <div><div class="num-value">8</div><div class="num-label">Unidades ativas</div></div>
+        <div><div class="num-value">4.9 ★</div><div class="num-label">Avaliação Google</div></div>
+        <div><div class="num-value">6+</div><div class="num-label">Condições tratadas</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section class="depoimentos section" id="depoimentos">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Quem já passou por aqui</span>
+        <h2 class="section-title">O que nossos pacientes dizem</h2>
+      </div>
+      <div class="dep-scroll-wrap" id="depScroll">
+        <div class="dep-card">
+          <div class="dep-stars">★★★★★</div>
+          <p class="dep-quote">"Sofria com bruxismo há anos e já tentei de tudo. Depois de 4 sessões na Vibe, a dor na mandíbula reduziu demais. Parece spa, mas o resultado é de clínica séria."</p>
+          <div class="dep-author">
+            <div class="dep-avatar">
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div><div class="dep-name">Mariana S.</div><div class="dep-meta">Bruxismo · Pinheiros, SP</div></div>
+          </div>
+        </div>
+        <div class="dep-card dep-card-dark">
+          <div class="dep-stars">★★★★★</div>
+          <p class="dep-quote">"Tenho fibromialgia e nunca encontrei lugar que realmente entendesse minha condição. A equipe sabe onde dói e como trabalhar. Mudou minha qualidade de vida."</p>
+          <div class="dep-author">
+            <div class="dep-avatar">
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div><div class="dep-name">Cláudia M.</div><div class="dep-meta">Fibromialgia · Moema, SP</div></div>
+          </div>
+        </div>
+        <div class="dep-card">
+          <div class="dep-stars">★★★★★</div>
+          <p class="dep-quote">"Passei a vida com dor na coluna. O tratamento Coluna Sem Dor mudou tudo. Em 6 sessões voltei a dormir sem dor. Recomendo sem hesitar."</p>
+          <div class="dep-author">
+            <div class="dep-avatar">
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div><div class="dep-name">Roberto A.</div><div class="dep-meta">Coluna Sem Dor · Av. Paulista, SP</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="dep-dots" id="depDots">
+        <div class="dep-dot active"></div><div class="dep-dot"></div><div class="dep-dot"></div>
+      </div>
+      <div class="dep-google">
+        <span class="dep-google-stars">★★★★★</span>
+        <span><strong>4.9 de 5</strong> · Avaliações Google</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIPE -->
+  <section class="equipe section" id="equipe">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Nossa equipe</span>
+        <h2 class="section-title">Quem cuida de você</h2>
+        <p class="section-sub">Profissionais certificados e comprometidos com o seu resultado.</p>
+      </div>
+      <div class="equipe-grid">
+        <div class="eq-card">
+          <div class="eq-photo">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M16 3.5c1 .8 2 2.2 2 3.5"/></svg>
+          </div>
+          <div class="eq-body"><div class="eq-name">Nome Terapeuta</div><div class="eq-role">Especialista em Bruxismo</div><div class="eq-cred">CREFITO XXXXX</div></div>
+        </div>
+        <div class="eq-card">
+          <div class="eq-photo">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M16 3.5c1 .8 2 2.2 2 3.5"/></svg>
+          </div>
+          <div class="eq-body"><div class="eq-name">Nome Terapeuta</div><div class="eq-role">Fisioterapeuta e Pilates</div><div class="eq-cred">CREFITO XXXXX</div></div>
+        </div>
+        <div class="eq-card">
+          <div class="eq-photo">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M16 3.5c1 .8 2 2.2 2 3.5"/></svg>
+          </div>
+          <div class="eq-body"><div class="eq-name">Nome Terapeuta</div><div class="eq-role">Especialista em Fibromialgia</div><div class="eq-cred">CREFITO XXXXX</div></div>
+        </div>
+        <div class="eq-card">
+          <div class="eq-photo">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M16 3.5c1 .8 2 2.2 2 3.5"/></svg>
+          </div>
+          <div class="eq-body"><div class="eq-name">Nome Terapeuta</div><div class="eq-role">Terapeuta Corporal</div><div class="eq-cred">CREFITO XXXXX</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UNIDADES -->
+  <section class="unidades section" id="unidades">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Onde estamos</span>
+        <h2 class="section-title">Perto de você</h2>
+        <p class="section-sub">8 unidades em São Paulo, Londrina e Balneário Camboriú.</p>
+      </div>
+      <div class="unidades-grid">
+        <div class="un-card">
+          <div class="un-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="un-info"><div class="un-city">São Paulo</div><div class="un-bairro">Moema</div><div class="un-address">Rua [Endereço], XXX</div></div>
+          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Moema" class="un-link" target="_blank" aria-label="Agendar Moema">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+        <div class="un-card">
+          <div class="un-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="un-info"><div class="un-city">São Paulo</div><div class="un-bairro">Av. Paulista</div><div class="un-address">Rua [Endereço], XXX</div></div>
+          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Paulista" class="un-link" target="_blank" aria-label="Agendar Paulista">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+        <div class="un-card">
+          <div class="un-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="un-info"><div class="un-city">São Paulo</div><div class="un-bairro">Pinheiros</div><div class="un-address">Rua [Endereço], XXX</div></div>
+          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Pinheiros" class="un-link" target="_blank" aria-label="Agendar Pinheiros">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+        <div class="un-card">
+          <div class="un-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="un-info"><div class="un-city">São Paulo</div><div class="un-bairro">Jardins</div><div class="un-address">Rua [Endereço], XXX</div></div>
+          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Jardins" class="un-link" target="_blank" aria-label="Agendar Jardins">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+        <div class="un-card">
+          <div class="un-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="un-info"><div class="un-city">São Paulo</div><div class="un-bairro">Alphaville</div><div class="un-address">Rua [Endereço], XXX</div></div>
+          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Alphaville" class="un-link" target="_blank" aria-label="Agendar Alphaville">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+        <div class="un-card">
+          <div class="un-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="un-info"><div class="un-city">São Paulo</div><div class="un-bairro">Campinas</div><div class="un-address">Rua [Endereço], XXX</div></div>
+          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Campinas" class="un-link" target="_blank" aria-label="Agendar Campinas">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+        <div class="un-card">
+          <div class="un-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="un-info"><div class="un-city">Paraná</div><div class="un-bairro">Londrina</div><div class="un-address">Rua [Endereço], XXX</div></div>
+          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Londrina" class="un-link" target="_blank" aria-label="Agendar Londrina">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+        <div class="un-card">
+          <div class="un-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="un-info"><div class="un-city">Santa Catarina</div><div class="un-bairro">Balneário Camboriú</div><div class="un-address">Rua [Endereço], XXX</div></div>
+          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Balneário%20Camboriú" class="un-link" target="_blank" aria-label="Agendar Balneário Camboriú">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="container">
+      <div class="cta-final-content">
+        <span class="section-label">Dê o primeiro passo</span>
+        <h2 class="section-title">Chega de conviver com dor.</h2>
+        <p class="section-sub">Agenda com vagas limitadas por semana. Fale agora com a gente e encontre o dia ideal para sua primeira sessão.</p>
+        <div class="cta-urgency">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Vagas disponíveis nesta semana
+        </div>
+        <div class="cta-btns">
+          <a href="https://wa.me/55XXXXXXXXXXX?text=Olá!%20Quero%20agendar%20minha%20primeira%20sessão%20na%20Vibe%20Terapias."
+             class="btn btn-primary" target="_blank" rel="noopener">
+            <svg class="icon-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Agendar minha sessão agora
+          </a>
+          <a href="#tratamentos" class="btn btn-outline-white">Conhecer os tratamentos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="/" class="footer-logo" aria-label="Vibe Terapias">
+            <img src="assets/logo-branca.png" alt="Vibe Terapias — Clínica Especializada em Dor" width="160" height="44">
+          </a>
+          <p class="footer-desc">"Não somos um SPA. Somos a solução para as suas dores. Mas você relaxa como em um spa."</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://wa.me/55XXXXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" style="fill:rgba(255,255,255,0.6);stroke:none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div><div class="footer-col-title">Tratamentos</div><div class="footer-links"><a href="#">Bruxismo</a><a href="#">Fibromialgia</a><a href="#">Coluna Sem Dor</a><a href="#">Pilates</a><a href="#">Pés e Pernas</a><a href="#">Pescoço e Crânio</a></div></div>
+        <div><div class="footer-col-title">Unidades</div><div class="footer-links"><a href="#">Moema</a><a href="#">Av. Paulista</a><a href="#">Pinheiros</a><a href="#">Jardins</a><a href="#">Alphaville</a><a href="#">Campinas</a><a href="#">Londrina</a><a href="#">Balneário Camboriú</a></div></div>
+        <div><div class="footer-col-title">Empresa</div><div class="footer-links"><a href="#">Sobre nós</a><a href="#">Equipe</a><a href="#">Blog</a><a href="#">Contato</a><a href="#">Privacidade</a></div></div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Vibe Terapias. Todos os direitos reservados.</p>
+        <p>Feito com dedicação para quem quer viver sem dor.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 8);
+    }, { passive: true });
+
+    const hamburger = document.getElementById('hamburger');
+    const navMobile = document.getElementById('nav-mobile');
+    let menuOpen = false;
+    hamburger.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      hamburger.classList.toggle('open', menuOpen);
+      navMobile.classList.toggle('open', menuOpen);
+      hamburger.setAttribute('aria-expanded', menuOpen);
+    });
+    navMobile.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        menuOpen = false;
+        hamburger.classList.remove('open');
+        navMobile.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', false);
+      });
+    });
+
+    const depScroll = document.getElementById('depScroll');
+    const depDots   = document.querySelectorAll('.dep-dot');
+    if (depScroll && depDots.length) {
+      depScroll.addEventListener('scroll', () => {
+        const index = Math.round(depScroll.scrollLeft / depScroll.offsetWidth);
+        depDots.forEach((d, i) => d.classList.toggle('active', i === index));
+      }, { passive: true });
+    }
+
+    const fadeEls = document.querySelectorAll('.trat-card, .dep-card, .eq-card, .diferencial-item');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    fadeEls.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(16px)';
+      el.style.transition = 'opacity 0.45s ease, transform 0.45s ease';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
