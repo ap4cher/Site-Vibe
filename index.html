@@ -79,6 +79,7 @@
       --primary-light: #F5EBE6;
       --accent:        #C9B87A;
       --accent-light:  #F7F2E4;
+      --orange:        #e77100;
       --text-dark:     #2A1409;
       --text-medium:   #6B4035;
       --text-light:    #9C7A6C;
@@ -178,6 +179,12 @@
       border: 2px solid rgba(255,255,255,0.45);
     }
     .btn-outline-white:active { background: rgba(255,255,255,0.1); }
+    .btn-outline-orange {
+      background: transparent;
+      color: #e77100;
+      border: 2px solid #e77100;
+    }
+    .btn-outline-orange:active { background: rgba(231,113,0,0.1); }
     .btn-white { background: white; color: var(--primary-dark); }
     .icon-wpp { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
 
@@ -242,43 +249,53 @@
     }
     .hero-bg-img {
       position: absolute; inset: 0;
-      background-image: url('assets/hero-mobile.jpg');
+      background-image: url('assets/hero-desktop.jpg');
       background-size: cover;
-      background-position: center top;
+      background-position: center right;
       background-repeat: no-repeat;
+      opacity: 0.8;
       z-index: 0;
     }
+    /* fade esquerda→direita: sólido à esquerda, transparente à direita */
     .hero::before {
       content: '';
       position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(78,37,24,0.35) 0%, rgba(78,37,24,0.72) 45%, rgba(42,20,9,0.97) 100%);
+      background: linear-gradient(
+        to right,
+        #2A1409 0%,
+        #2A1409 28%,
+        rgba(42,20,9,0.85) 45%,
+        rgba(42,20,9,0.40) 65%,
+        rgba(42,20,9,0.10) 82%,
+        transparent 100%
+      );
       z-index: 1;
     }
     .hero-bg-color {
       position: absolute; inset: 0;
-      background: linear-gradient(140deg, #2A1409 0%, #4E2518 50%, #7D4535 100%);
+      background: #2A1409;
       z-index: -1;
     }
     .hero-content { position: relative; z-index: 2; width: 100%; }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 7px;
-      background: rgba(201,184,122,0.16);
-      border: 1px solid rgba(201,184,122,0.35);
-      color: var(--accent);
+      background: transparent;
+      border: 1.5px solid #e77100;
+      color: #e77100;
       font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em;
       text-transform: uppercase; padding: 6px 14px;
       border-radius: 50px; margin-bottom: 20px;
     }
     .hero-badge::before {
       content: ''; width: 5px; height: 5px;
-      background: var(--accent); border-radius: 50%; flex-shrink: 0;
+      background: #e77100; border-radius: 50%; flex-shrink: 0;
     }
     .hero-title {
       font-family: var(--font-display);
       font-size: 2.15rem; font-weight: 400;
       color: white; line-height: 1.14; margin-bottom: 14px;
     }
-    .hero-title .highlight { color: var(--accent); font-style: italic; }
+    .hero-title .highlight { color: #e77100; font-style: italic; }
     .hero-tagline {
       font-family: var(--font-display);
       font-size: 1.25rem; font-style: italic;
@@ -302,7 +319,8 @@
       font-family: var(--font-display);
       font-size: 1.5rem; font-weight: 400; color: white; line-height: 1;
     }
-    .hero-stat-label { font-size: 0.7rem; color: rgba(255,255,255,0.50); margin-top: 3px; line-height: 1.3; font-weight: 400; }
+    .hero-stat-label { font-size: 0.7rem; color: rgba(255,255,255,0.50); margin-top: 3px; line-height: 1.4; font-weight: 400; }
+    .hero-stat-label .stat-sub { display: block; font-size: 0.65rem; color: rgba(255,255,255,0.38); font-weight: 400; margin-top: 1px; }
     .hero-stat-divider { width: 1px; height: 32px; background: rgba(255,255,255,0.15); flex-shrink: 0; }
 
     /* ── MARQUEE ── */
@@ -675,7 +693,7 @@
   <header class="header" id="header">
     <div class="container">
       <div class="header-inner">
-        <a href="/" class="logo" aria-label="Vibe Terapias — Clínica Especializada em Dor">
+        <a href="#hero" class="logo" aria-label="Vibe Terapias — Clínica Especializada em Dor">
           <img src="assets/logo-colorida.png" alt="Vibe Terapias" width="140" height="40">
         </a>
         <nav class="nav">
@@ -708,7 +726,7 @@
   </header>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="hero">
     <div class="hero-bg-color"></div>
     <div class="hero-bg-img" role="img" aria-label="Ambiente terapêutico Vibe Terapias"></div>
     <div class="container">
@@ -720,19 +738,22 @@
           para as suas dores.
         </h1>
         <p class="hero-tagline">Mas você relaxa como em um spa.</p>
-        <p class="hero-sub">Tratamentos terapêuticos especializados para bruxismo, fibromialgia, dor na coluna e muito mais. 8 unidades em São Paulo, Londrina e Balneário Camboriú.</p>
+        <p class="hero-sub">Tratamentos terapêuticos especializados para bruxismo, fibromialgia, dor na coluna e muito mais.</p>
         <div class="hero-ctas">
           <a href="https://wa.me/55XXXXXXXXXXX?text=Olá!%20Quero%20agendar%20minha%20sessão%20na%20Vibe%20Terapias."
              class="btn btn-primary" target="_blank" rel="noopener">
             <svg class="icon-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
             Agendar minha sessão
           </a>
-          <a href="#tratamentos" class="btn btn-outline-white">Ver tratamentos →</a>
+          <a href="#tratamentos" class="btn btn-outline-orange">Ver tratamentos →</a>
         </div>
         <div class="hero-stats">
           <div class="hero-stat"><div class="hero-stat-num">+45 mil</div><div class="hero-stat-label">Atendimentos realizados</div></div>
           <div class="hero-stat-divider"></div>
-          <div class="hero-stat"><div class="hero-stat-num">8</div><div class="hero-stat-label">Unidades SP | PR | SC</div></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">8 Unidades</div>
+            <div class="hero-stat-label"><span class="stat-sub">SP | PR | SC</span></div>
+          </div>
           <div class="hero-stat-divider"></div>
           <div class="hero-stat"><div class="hero-stat-num">4.9 ★</div><div class="hero-stat-label">Google</div></div>
         </div>
