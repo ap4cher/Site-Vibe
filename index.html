@@ -492,48 +492,41 @@
       100% { transform: translateX(-50%); }
     }
 
-    /* ── DEPOIMENTOS ── */
-    .depoimentos { background: var(--white); }
-    .dep-scroll-wrap {
-      overflow-x: auto; -webkit-overflow-scrolling: touch;
-      scroll-snap-type: x mandatory;
-      display: flex; gap: 14px; padding-bottom: 16px; margin-top: 28px;
-      margin-left: calc(-1 * var(--space-container));
-      margin-right: calc(-1 * var(--space-container));
-      padding-left: var(--space-container);
-      padding-right: var(--space-container);
-      scrollbar-width: none;
+    /* ── DEPOIMENTOS (VSL) ── */
+    .depoimentos { background: var(--bg); }
+    .vsl-grid {
+      display: flex; flex-direction: column; gap: 24px; margin-top: 32px;
     }
-    .dep-scroll-wrap::-webkit-scrollbar { display: none; }
-    .dep-card {
-      background: var(--bg); border-radius: var(--radius); padding: 24px 20px;
-      flex: 0 0 82vw; max-width: 320px; scroll-snap-align: start;
+    .vsl-card {
+      background: white; border-radius: var(--radius);
+      overflow: hidden; box-shadow: var(--shadow);
     }
-    .dep-card-dark { background: var(--primary-dark); }
-    .dep-dots { display: flex; justify-content: center; gap: 6px; margin-top: 16px; }
-    .dep-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); transition: background 0.2s; }
-    .dep-dot.active { background: var(--primary); }
-    .dep-stars { display: flex; gap: 3px; margin-bottom: 14px; }
-    .dep-star { color: var(--accent); font-size: 0.95rem; }
-    .dep-quote { font-size: 0.88rem; color: var(--text-medium); line-height: 1.72; margin-bottom: 18px; font-style: italic; font-weight: 400; }
-    .dep-card-dark .dep-quote { color: rgba(255,255,255,0.78); }
-    .dep-author { display: flex; align-items: center; gap: 10px; }
-    .dep-avatar {
-      width: 42px; height: 42px; border-radius: 50%;
-      background: var(--primary-light); border: 2px solid var(--border);
+    .vsl-video-wrap {
+      position: relative; width: 100%; aspect-ratio: 16/9;
+      background: var(--primary-dark);
+    }
+    .vsl-video-wrap video {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .vsl-play-btn {
+      position: absolute; inset: 0;
       display: flex; align-items: center; justify-content: center;
-      overflow: hidden; flex-shrink: 0;
+      background: rgba(42,20,9,0.38);
+      cursor: pointer; transition: background 0.2s;
     }
-    .dep-avatar svg { width: 22px; height: 22px; stroke: var(--primary); fill: none; stroke-width: 1.5; }
-    .dep-card-dark .dep-avatar { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.18); }
-    .dep-card-dark .dep-avatar svg { stroke: rgba(255,255,255,0.7); }
-    .dep-avatar img { width: 100%; height: 100%; object-fit: cover; }
-    .dep-name { font-weight: 700; font-size: 0.88rem; color: var(--text-dark); }
-    .dep-card-dark .dep-name { color: white; }
-    .dep-meta { font-size: 0.75rem; color: var(--text-light); margin-top: 2px; font-weight: 400; }
-    .dep-card-dark .dep-meta { color: rgba(255,255,255,0.48); }
-    .dep-google { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 20px; font-size: 0.85rem; color: var(--text-medium); }
-    .dep-google-stars { color: #FBBC04; }
+    .vsl-play-btn:hover { background: rgba(42,20,9,0.18); }
+    .vsl-play-icon {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: #fffad3; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.28);
+    }
+    .vsl-play-icon svg { width: 28px; height: 28px; fill: var(--primary-dark); margin-left: 4px; }
+    .vsl-info { padding: 16px 20px 20px; }
+    .vsl-tratamento {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: #974a00; margin-bottom: 4px;
+    }
+    .vsl-nome { font-weight: 700; font-size: 1rem; color: var(--text-dark); }
 
     /* ── EQUIPE ── */
     .equipe { background: var(--bg); }
@@ -700,6 +693,7 @@
       .trat-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
       .trat-img { height: 170px; }
       .numeros-grid { grid-template-columns: repeat(4, 1fr); }
+      .vsl-grid { flex-direction: row; gap: 28px; }
       .num-value { font-size: 3.5rem; }
       .dep-scroll-wrap { overflow: visible; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin: 0; padding: 0; margin-top: 48px; }
       .dep-card { flex: none; max-width: none; scroll-snap-align: none; transition: box-shadow 0.3s; }
@@ -1009,46 +1003,61 @@
     <div class="container">
       <div class="text-center">
         <span class="section-label">Quem já passou por aqui</span>
-        <h2 class="section-title">O que nossos pacientes dizem</h2>
+        <h2 class="section-title">Veja quem a Vibe já transformou</h2>
       </div>
-      <div class="dep-scroll-wrap" id="depScroll">
-        <div class="dep-card">
-          <div class="dep-stars">★★★★★</div>
-          <p class="dep-quote">"Sofria com bruxismo há anos e já tentei de tudo. Depois de 4 sessões na Vibe, a dor na mandíbula reduziu demais. Parece spa, mas o resultado é de clínica séria."</p>
-          <div class="dep-author">
-            <div class="dep-avatar">
-              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <div class="vsl-grid">
+
+        <!-- Card 1 -->
+        <div class="vsl-card">
+          <div class="vsl-video-wrap">
+            <!-- Substitua o src pelo caminho do seu vídeo: assets/Depoimentos/bruxismo.mp4 -->
+            <video src="" poster="" preload="none"></video>
+            <div class="vsl-play-btn" onclick="playVSL(this)">
+              <div class="vsl-play-icon">
+                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
             </div>
-            <div><div class="dep-name">Mariana S.</div><div class="dep-meta">Bruxismo · Pinheiros, SP</div></div>
+          </div>
+          <div class="vsl-info">
+            <div class="vsl-tratamento">Tratamento de Bruxismo</div>
+            <div class="vsl-nome">João Silva</div>
           </div>
         </div>
-        <div class="dep-card dep-card-dark">
-          <div class="dep-stars">★★★★★</div>
-          <p class="dep-quote">"Tenho fibromialgia e nunca encontrei lugar que realmente entendesse minha condição. A equipe sabe onde dói e como trabalhar. Mudou minha qualidade de vida."</p>
-          <div class="dep-author">
-            <div class="dep-avatar">
-              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+
+        <!-- Card 2 -->
+        <div class="vsl-card">
+          <div class="vsl-video-wrap">
+            <!-- Substitua o src pelo caminho do seu vídeo: assets/Depoimentos/coluna.mp4 -->
+            <video src="" poster="" preload="none"></video>
+            <div class="vsl-play-btn" onclick="playVSL(this)">
+              <div class="vsl-play-icon">
+                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
             </div>
-            <div><div class="dep-name">Cláudia M.</div><div class="dep-meta">Fibromialgia · Moema, SP</div></div>
+          </div>
+          <div class="vsl-info">
+            <div class="vsl-tratamento">Tratamento de Dor na Coluna</div>
+            <div class="vsl-nome">Ana Carvalho</div>
           </div>
         </div>
-        <div class="dep-card">
-          <div class="dep-stars">★★★★★</div>
-          <p class="dep-quote">"Passei a vida com dor na coluna. O tratamento Coluna Sem Dor mudou tudo. Em 6 sessões voltei a dormir sem dor. Recomendo sem hesitar."</p>
-          <div class="dep-author">
-            <div class="dep-avatar">
-              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+
+        <!-- Card 3 -->
+        <div class="vsl-card">
+          <div class="vsl-video-wrap">
+            <!-- Substitua o src pelo caminho do seu vídeo: assets/Depoimentos/fibromialgia.mp4 -->
+            <video src="" poster="" preload="none"></video>
+            <div class="vsl-play-btn" onclick="playVSL(this)">
+              <div class="vsl-play-icon">
+                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
             </div>
-            <div><div class="dep-name">Roberto A.</div><div class="dep-meta">Coluna Sem Dor · Av. Paulista, SP</div></div>
+          </div>
+          <div class="vsl-info">
+            <div class="vsl-tratamento">Tratamento de Fibromialgia</div>
+            <div class="vsl-nome">Cláudia Mendes</div>
           </div>
         </div>
-      </div>
-      <div class="dep-dots" id="depDots">
-        <div class="dep-dot active"></div><div class="dep-dot"></div><div class="dep-dot"></div>
-      </div>
-      <div class="dep-google">
-        <span class="dep-google-stars">★★★★★</span>
-        <span><strong>4.9 de 5</strong> · Avaliações Google</span>
+
       </div>
     </div>
   </section>
@@ -1270,7 +1279,15 @@
       }, { passive: true });
     }
 
-    const fadeEls = document.querySelectorAll('.trat-card, .dep-card, .eq-card, .diferencial-item');
+    function playVSL(btn) {
+      const wrap = btn.parentElement;
+      const video = wrap.querySelector('video');
+      btn.style.display = 'none';
+      video.controls = true;
+      video.play();
+    }
+
+    const fadeEls = document.querySelectorAll('.trat-card, .vsl-card, .eq-card, .diferencial-item');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
