@@ -249,7 +249,7 @@
     }
     .hero-bg-img {
       position: absolute; inset: 0;
-      background-image: url('assets/hero-desktop.webp');
+      background-image: url('assets/Hero/hero-desktop.webp');
       background-size: cover;
       background-position: center right;
       background-repeat: no-repeat;
@@ -354,7 +354,7 @@
       font-size: 0.95rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: #fffad3;
       font-weight: 400;
     }
     .marquee-sep {
@@ -368,6 +368,10 @@
       0%   { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
+
+    /* ── IMAGEM SESSÃO ── */
+    .sessao-img-wrap { width: 100%; line-height: 0; }
+    .sessao-img { width: 100%; height: auto; display: block; object-fit: cover; }
 
     /* ── TRATAMENTOS ── */
     .tratamentos { background: var(--bg); }
@@ -604,7 +608,7 @@
       .header-inner { height: 68px; }
       .header-cta-desktop { display: flex; }
       .hero { align-items: center; padding-bottom: 56px; }
-      .hero-bg-img { background-image: url('assets/hero-desktop.webp'); }
+      .hero-bg-img { background-image: url('assets/Hero/hero-desktop.webp'); }
       .hero-title { font-size: 2.8rem; }
       .hero-tagline { font-size: 1.4rem; }
       .hero-ctas { flex-direction: row; }
@@ -699,7 +703,7 @@
     <div class="container">
       <div class="header-inner">
         <a href="#hero" class="logo" aria-label="Vibe Terapias — Clínica Especializada em Dor">
-          <img src="assets/logo-colorida.webp" alt="Vibe Terapias" width="140" height="40">
+          <img src="assets/Hero/logo-colorida.webp" alt="Vibe Terapias" width="140" height="40">
         </a>
         <nav class="nav">
           <a href="#tratamentos">Tratamentos</a>
@@ -788,6 +792,11 @@
       <span class="marquee-item">Clínica Especializada em Dor<span class="marquee-sep"></span></span>
       <span class="marquee-item">Clínica Especializada em Dor<span class="marquee-sep"></span></span>
     </div>
+  </div>
+
+  <!-- IMAGEM SESSÃO -->
+  <div class="sessao-img-wrap">
+    <img src="assets/Sessão.webp" alt="Sessão Vibe Terapias" class="sessao-img">
   </div>
 
   <!-- TRATAMENTOS -->
