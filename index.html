@@ -383,18 +383,12 @@
       box-shadow: var(--shadow); display: flex; flex-direction: row; align-items: stretch;
     }
     .trat-img {
-      width: 90px; flex-shrink: 0;
+      width: 110px; flex-shrink: 0;
       background: var(--primary-light);
       display: flex; align-items: center; justify-content: center;
       position: relative; overflow: hidden;
     }
-    .trat-img img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
-    .trat-img-icon {
-      display: flex; align-items: center; justify-content: center;
-      width: 100%; height: 100%; min-height: 90px;
-      color: var(--primary);
-    }
-    .trat-img-icon svg { width: 36px; height: 36px; stroke: var(--primary); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .trat-img img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; display: block; }
     .trat-tag {
       position: absolute; top: 8px; left: 0; right: 0; text-align: center;
       background: var(--accent); color: var(--primary-dark);
@@ -402,7 +396,7 @@
       text-transform: uppercase; padding: 3px 0;
     }
     .trat-body { padding: 16px; flex: 1; display: flex; flex-direction: column; justify-content: center; }
-    .trat-title { font-family: var(--font-display); font-size: 1rem; font-weight: 400; color: var(--text-dark); margin-bottom: 5px; }
+    .trat-title { font-family: 'Poppins', system-ui, sans-serif; font-size: 1rem; font-weight: 500; color: var(--text-dark); margin-bottom: 5px; }
     .trat-text { font-size: 0.8rem; color: var(--text-medium); line-height: 1.55; margin-bottom: 10px; font-weight: 400; }
     .trat-link {
       font-size: 0.82rem; font-weight: 700; color: var(--primary);
@@ -616,7 +610,6 @@
       .tratamentos-grid { display: grid; grid-template-columns: 1fr 1fr; }
       .trat-card { flex-direction: column; }
       .trat-img { width: 100%; height: 160px; }
-      .trat-img-icon { min-height: 160px; }
       .trat-tag { top: 10px; left: 10px; right: auto; text-align: left; padding: 3px 10px; border-radius: 50px; }
       .trat-body { padding: 18px 20px; }
       .tratamentos-header .btn { width: auto; }
@@ -664,7 +657,6 @@
       .tratamentos-grid { grid-template-columns: repeat(3, 1fr); }
       .trat-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
       .trat-img { height: 170px; }
-      .trat-img-icon { min-height: 170px; }
       .numeros-grid { grid-template-columns: repeat(4, 1fr); }
       .num-value { font-size: 3.5rem; }
       .dep-scroll-wrap { overflow: visible; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin: 0; padding: 0; margin-top: 48px; }
@@ -811,10 +803,37 @@
       <div class="tratamentos-grid">
         <div class="trat-card">
           <div class="trat-img">
-            <div class="trat-img-icon">
-              <!-- ícone: dente / mandíbula -->
-              <svg viewBox="0 0 24 24"><path d="M12 2C9.5 2 7 4 7 7c0 1.5.5 3 1 4.5C8.5 13.5 9 16 9 18c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2 0-2 .5-4.5 1-6.5.5-1.5 1-3 1-4.5C17 4 14.5 2 12 2z"/><path d="M9 7h6"/></svg>
-            </div>
+            <img src="assets/Tratamentos/pescoco.webp" alt="Dor no Pescoço" loading="lazy">
+          </div>
+          <div class="trat-body">
+            <div class="trat-title">Pescoço e Crânio Relax</div>
+            <p class="trat-text">Tensão cervical, enxaqueca de tensão e rigidez no pescoço.</p>
+            <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20saber%20sobre%20pescoço%20e%20crânio%20relax" class="trat-link" target="_blank">Quero esse tratamento →</a>
+          </div>
+        </div>
+        <div class="trat-card">
+          <div class="trat-img">
+            <img src="assets/Tratamentos/pes-pernas.webp" alt="Dores nos Pés e Pernas" loading="lazy">
+          </div>
+          <div class="trat-body">
+            <div class="trat-title">Pés e Pernas Relax</div>
+            <p class="trat-text">Alívio para cansaço, inchaço e dores — especial para quem passa o dia em pé.</p>
+            <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20saber%20sobre%20pés%20e%20pernas%20relax" class="trat-link" target="_blank">Quero esse tratamento →</a>
+          </div>
+        </div>
+        <div class="trat-card">
+          <div class="trat-img">
+            <img src="assets/Tratamentos/coluna.webp" alt="Dor na Coluna" loading="lazy">
+          </div>
+          <div class="trat-body">
+            <div class="trat-title">Coluna Sem Dor</div>
+            <p class="trat-text">Para dores lombares, cervicais e torácicas. Da hérnia à tensão do dia a dia.</p>
+            <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20saber%20sobre%20coluna%20sem%20dor" class="trat-link" target="_blank">Quero esse tratamento →</a>
+          </div>
+        </div>
+        <div class="trat-card">
+          <div class="trat-img">
+            <img src="assets/Tratamentos/bruxismo.webp" alt="Bruxismo" loading="lazy">
             <span class="trat-tag">Mais pedido</span>
           </div>
           <div class="trat-body">
@@ -825,67 +844,12 @@
         </div>
         <div class="trat-card">
           <div class="trat-img">
-            <div class="trat-img-icon">
-              <!-- ícone: ondas de dor / corpo -->
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M12 7v4m0 0l-3 5m3-5l3 5M9 16l-2 4m8-4l2 4"/><path d="M6 12c1-1 2-1.5 3-1"/><path d="M18 12c-1-1-2-1.5-3-1"/></svg>
-            </div>
+            <img src="assets/Tratamentos/fibromialgia.webp" alt="Fibromialgia" loading="lazy">
           </div>
           <div class="trat-body">
             <div class="trat-title">Fibromialgia</div>
             <p class="trat-text">Protocolo específico para reduzir dores generalizadas, fadiga e melhorar a qualidade de vida.</p>
             <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20saber%20sobre%20tratamento%20de%20fibromialgia" class="trat-link" target="_blank">Quero esse tratamento →</a>
-          </div>
-        </div>
-        <div class="trat-card">
-          <div class="trat-img">
-            <div class="trat-img-icon">
-              <!-- ícone: pilates / equilíbrio -->
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="4" r="1.5"/><path d="M12 6v5"/><path d="M8 10l4 2 4-2"/><path d="M10 17l2-5 2 5"/><path d="M8 22h8"/></svg>
-            </div>
-          </div>
-          <div class="trat-body">
-            <div class="trat-title">Pilates Terapêutico</div>
-            <p class="trat-text">Fortalecimento, correção postural e reabilitação com supervisão especializada.</p>
-            <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20saber%20sobre%20pilates%20terapêutico" class="trat-link" target="_blank">Quero esse tratamento →</a>
-          </div>
-        </div>
-        <div class="trat-card">
-          <div class="trat-img">
-            <div class="trat-img-icon">
-              <!-- ícone: coluna vertebral -->
-              <svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="4" rx="1"/><rect x="9" y="7" width="6" height="4" rx="1"/><rect x="9" y="12" width="6" height="4" rx="1"/><rect x="9" y="17" width="6" height="4" rx="1"/><path d="M12 2v20"/></svg>
-            </div>
-          </div>
-          <div class="trat-body">
-            <div class="trat-title">Coluna Sem Dor</div>
-            <p class="trat-text">Para dores lombares, cervicais e torácicas. Da hérnia à tensão do dia a dia.</p>
-            <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20saber%20sobre%20coluna%20sem%20dor" class="trat-link" target="_blank">Quero esse tratamento →</a>
-          </div>
-        </div>
-        <div class="trat-card">
-          <div class="trat-img">
-            <div class="trat-img-icon">
-              <!-- ícone: pernas / circulação -->
-              <svg viewBox="0 0 24 24"><path d="M10 3h4v10l3 8H7l3-8V3z"/><path d="M9 13h6"/></svg>
-            </div>
-          </div>
-          <div class="trat-body">
-            <div class="trat-title">Pés e Pernas Relax</div>
-            <p class="trat-text">Alívio para cansaço, inchaço e dores — especial para quem passa o dia em pé.</p>
-            <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20saber%20sobre%20pés%20e%20pernas%20relax" class="trat-link" target="_blank">Quero esse tratamento →</a>
-          </div>
-        </div>
-        <div class="trat-card">
-          <div class="trat-img">
-            <div class="trat-img-icon">
-              <!-- ícone: cabeça / cérebro / pescoço -->
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 12v3"/><path d="M9 15h6"/><path d="M10 18c0 2 4 2 4 0"/><path d="M8 8c-.5-1-1-2.5 0-3.5S11 4 12 4"/></svg>
-            </div>
-          </div>
-          <div class="trat-body">
-            <div class="trat-title">Pescoço e Crânio Relax</div>
-            <p class="trat-text">Tensão cervical, enxaqueca de tensão e rigidez no pescoço.</p>
-            <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20saber%20sobre%20pescoço%20e%20crânio%20relax" class="trat-link" target="_blank">Quero esse tratamento →</a>
           </div>
         </div>
       </div>
