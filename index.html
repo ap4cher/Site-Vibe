@@ -432,10 +432,18 @@
     .diferencial-visual {
       order: -1; border-radius: var(--radius); overflow: hidden;
       height: 220px; background: rgba(255,255,255,0.07);
+      position: relative;
       display: flex; align-items: center; justify-content: center;
       position: relative;
     }
     .diferencial-visual img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+    .sobre-slideshow { position: absolute; inset: 0; }
+    .sobre-slide {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      opacity: 0; transition: opacity 1.2s ease-in-out;
+    }
+    .sobre-slide.active { opacity: 1; }
     .dif-badge {
       position: absolute; bottom: 14px; left: 14px;
       background: white; border-radius: 12px; padding: 10px 14px;
@@ -449,12 +457,13 @@
     .diferencial-list { display: flex; flex-direction: column; gap: 24px; }
     .diferencial-item { display: flex; gap: 14px; align-items: flex-start; }
     .dif-icon {
-      width: 42px; height: 42px;
-      background: rgba(201,184,122,0.12); border: 1px solid rgba(201,184,122,0.25);
+      width: 48px; height: 48px;
+      background: transparent; border: 1.5px solid #fffad3;
       border-radius: 10px; display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
-    .dif-icon svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .dif-icon img { width: 26px; height: 26px; object-fit: contain; filter: brightness(0) invert(1) sepia(1) saturate(0) brightness(2); }
+    .dif-icon svg { width: 22px; height: 22px; stroke: #fffad3; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
     .dif-title { font-weight: 700; font-size: 0.92rem; color: white; margin-bottom: 4px; }
     .dif-text { font-size: 0.84rem; color: rgba(255,255,255,0.58); line-height: 1.6; font-weight: 400; }
 
@@ -901,43 +910,43 @@
     <div class="container">
       <div class="diferencial-grid">
         <div class="diferencial-visual">
+          <div class="sobre-slideshow" aria-hidden="true">
+            <div class="sobre-slide active" style="background-image:url('assets/Sobre/Fotos/1.webp')"></div>
+            <div class="sobre-slide" style="background-image:url('assets/Sobre/Fotos/2.webp')"></div>
+            <div class="sobre-slide" style="background-image:url('assets/Sobre/Fotos/3.webp')"></div>
+          </div>
           <div class="dif-badge">
             <div class="dif-badge-icon">
-              <!-- ícone: estrela -->
               <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             </div>
             <div><div class="dif-badge-num">4.9 / 5.0</div><div class="dif-badge-sub">Avaliação Google</div></div>
           </div>
         </div>
         <div>
-          <span class="section-label">Por que a Vibe?</span>
-          <h2 class="section-title">Resultado terapêutico.<br>Experiência de spa.</h2>
-          <p class="section-sub">Aqui não é relaxamento por relaxamento. É tratamento com método, técnica e profissionais que entendem a sua dor.</p>
+          <span class="section-label" style="color:#fffad3;">Por que a Vibe?</span>
+          <h2 class="section-title">Relaxe e deixe a gente tratar a raíz da sua dor!</h2>
+          <p class="section-sub">Aqui não é relaxamento por relaxamento. É tratamento personalizado para alcançar a raiz do seu tipo de dor.</p>
           <div class="diferencial-list" style="margin-top:28px;">
             <div class="diferencial-item">
               <div class="dif-icon">
-                <!-- ícone: alvo / precisão -->
                 <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
               </div>
-              <div><div class="dif-title">Tratamento focado na causa, não no sintoma</div><div class="dif-text">Protocolo terapêutico personalizado, não massagem aleatória.</div></div>
+              <div><div class="dif-title">Construímos um protocolo terapêutico personalizado para você</div><div class="dif-text">Protocolo terapêutico personalizado, não massagem aleatória.</div></div>
             </div>
             <div class="diferencial-item">
               <div class="dif-icon">
-                <!-- ícone: certificado / medalha -->
                 <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M9 14l-3 8 6-3 6 3-3-8"/></svg>
               </div>
-              <div><div class="dif-title">Profissionais certificados e especializados</div><div class="dif-text">Formação técnica específica nas condições que tratamos.</div></div>
+              <div><div class="dif-title">Toda a nossa equipe segue o mesmo alto padrão de certificação</div><div class="dif-text">Formação técnica específica nas condições que tratamos.</div></div>
             </div>
             <div class="diferencial-item">
               <div class="dif-icon">
-                <!-- ícone: folha / bem-estar -->
                 <svg viewBox="0 0 24 24"><path d="M21 3C21 3 14 5 12 12C10 5 3 3 3 3C3 3 3 14 12 18C21 14 21 3 21 3Z"/><path d="M12 18v4"/></svg>
               </div>
-              <div><div class="dif-title">Ambiente que cuida do corpo e da mente</div><div class="dif-text">Você sai tratado e renovado — não só "relaxado".</div></div>
+              <div><div class="dif-title">Você sai sem dores e muito relaxado</div><div class="dif-text">Você sai tratado e renovado — não só "relaxado".</div></div>
             </div>
             <div class="diferencial-item">
               <div class="dif-icon">
-                <!-- ícone: pin / localização -->
                 <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
               <div><div class="dif-title">8 unidades — SP, PR e SC</div><div class="dif-text">Alphaville, Campinas, Jardins, Pinheiros, Av. Paulista, Moema, Londrina e Balneário Camboriú.</div></div>
@@ -1180,6 +1189,18 @@
         current = (current + 1) % slides.length;
         slides[current].classList.add('active');
       }, 3500);
+    })();
+
+    // Sobre slideshow
+    (function() {
+      const slides = document.querySelectorAll('.sobre-slide');
+      if (!slides.length) return;
+      let current = 0;
+      setInterval(function() {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+      }, 5000);
     })();
 
     const header = document.getElementById('header');
