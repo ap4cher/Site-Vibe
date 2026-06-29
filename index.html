@@ -377,7 +377,23 @@
     .sessao-img { width: 100%; height: auto; display: block; object-fit: cover; }
 
     /* ── TRATAMENTOS ── */
-    .tratamentos { background: var(--bg); }
+    .tratamentos {
+      background: var(--bg);
+      position: relative;
+    }
+    .tratamentos::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('assets/Ícone.webp');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      opacity: 0.06;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .tratamentos > * { position: relative; z-index: 1; }
     .tratamentos-header { margin-bottom: 28px; }
     .tratamentos-header .btn { margin-top: 20px; width: 100%; }
     .tratamentos-grid { display: flex; flex-direction: column; gap: 18px; }
