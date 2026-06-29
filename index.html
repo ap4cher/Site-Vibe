@@ -561,10 +561,12 @@
     .unidades-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 28px; }
     .un-card {
       border: 1.5px solid var(--border); border-radius: var(--radius);
-      padding: 18px 16px; display: flex; align-items: center; gap: 14px;
+      padding: 18px 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px;
       transition: all 0.2s; -webkit-tap-highlight-color: transparent;
+      cursor: pointer;
     }
     .un-card:active { border-color: var(--primary); background: var(--primary-light); }
+    .un-card.expanded { border-color: var(--primary); background: var(--primary-light); }
     .un-icon { flex-shrink: 0; color: var(--primary); }
     .un-icon svg { width: 22px; height: 22px; stroke: var(--primary); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
     .un-info { flex: 1; }
@@ -581,6 +583,20 @@
     .un-link svg { width: 18px; height: 18px; stroke: var(--primary); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .un-link:active { background: var(--primary); }
     .un-link:active svg { stroke: white; }
+    .un-toggle {
+      display: flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+      background: transparent; transition: transform 0.25s ease;
+    }
+    .un-toggle svg { width: 18px; height: 18px; stroke: var(--primary); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .un-card.expanded .un-toggle { transform: rotate(180deg); }
+    .un-map-wrap {
+      flex: 0 0 100%; width: 100%; max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, margin-top 0.4s ease;
+      border-radius: calc(var(--radius) - 4px);
+    }
+    .un-card.expanded .un-map-wrap { max-height: 220px; margin-top: 12px; }
+    .un-map-wrap iframe { width: 100%; height: 220px; border: 0; display: block; border-radius: calc(var(--radius) - 4px); }
 
     /* ── CTA FINAL ── */
     .cta-final {
@@ -1102,61 +1118,77 @@
         <p class="section-sub">8 unidades em São Paulo, Londrina e Balneário Camboriú.</p>
       </div>
       <div class="unidades-grid">
-        <div class="un-card">
+        <div class="un-card" data-map="Vibe Terapias Moema São Paulo">
           <div class="un-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div class="un-info"><div class="un-city">São Paulo</div><div class="un-bairro">Moema</div><div class="un-address">Rua [Endereço], XXX</div></div>
-          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Moema" class="un-link" target="_blank" aria-label="Agendar Moema">
+          <div class="un-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Moema" class="un-link" target="_blank" aria-label="Agendar Moema" onclick="event.stopPropagation()">
             <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
           </a>
+          <div class="un-map-wrap"><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src=""></iframe></div>
         </div>
-        <div class="un-card">
+        <div class="un-card" data-map="Vibe Terapias Av. Paulista São Paulo">
           <div class="un-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div class="un-info"><div class="un-city">São Paulo</div><div class="un-bairro">Av. Paulista</div><div class="un-address">Rua [Endereço], XXX</div></div>
-          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Paulista" class="un-link" target="_blank" aria-label="Agendar Paulista">
+          <div class="un-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Paulista" class="un-link" target="_blank" aria-label="Agendar Paulista" onclick="event.stopPropagation()">
             <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
           </a>
+          <div class="un-map-wrap"><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src=""></iframe></div>
         </div>
-        <div class="un-card">
+        <div class="un-card" data-map="Vibe Terapias Pinheiros São Paulo">
           <div class="un-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div class="un-info"><div class="un-city">São Paulo</div><div class="un-bairro">Pinheiros</div><div class="un-address">Rua [Endereço], XXX</div></div>
-          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Pinheiros" class="un-link" target="_blank" aria-label="Agendar Pinheiros">
+          <div class="un-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Pinheiros" class="un-link" target="_blank" aria-label="Agendar Pinheiros" onclick="event.stopPropagation()">
             <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
           </a>
+          <div class="un-map-wrap"><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src=""></iframe></div>
         </div>
-        <div class="un-card">
+        <div class="un-card" data-map="Vibe Terapias Jardins São Paulo">
           <div class="un-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div class="un-info"><div class="un-city">São Paulo</div><div class="un-bairro">Jardins</div><div class="un-address">Rua [Endereço], XXX</div></div>
-          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Jardins" class="un-link" target="_blank" aria-label="Agendar Jardins">
+          <div class="un-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Jardins" class="un-link" target="_blank" aria-label="Agendar Jardins" onclick="event.stopPropagation()">
             <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
           </a>
+          <div class="un-map-wrap"><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src=""></iframe></div>
         </div>
-        <div class="un-card">
+        <div class="un-card" data-map="Vibe Terapias Alphaville São Paulo">
           <div class="un-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div class="un-info"><div class="un-city">São Paulo</div><div class="un-bairro">Alphaville</div><div class="un-address">Rua [Endereço], XXX</div></div>
-          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Alphaville" class="un-link" target="_blank" aria-label="Agendar Alphaville">
+          <div class="un-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Alphaville" class="un-link" target="_blank" aria-label="Agendar Alphaville" onclick="event.stopPropagation()">
             <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
           </a>
+          <div class="un-map-wrap"><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src=""></iframe></div>
         </div>
-        <div class="un-card">
+        <div class="un-card" data-map="Vibe Terapias Campinas São Paulo">
           <div class="un-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div class="un-info"><div class="un-city">São Paulo</div><div class="un-bairro">Campinas</div><div class="un-address">Rua [Endereço], XXX</div></div>
-          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Campinas" class="un-link" target="_blank" aria-label="Agendar Campinas">
+          <div class="un-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Campinas" class="un-link" target="_blank" aria-label="Agendar Campinas" onclick="event.stopPropagation()">
             <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
           </a>
+          <div class="un-map-wrap"><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src=""></iframe></div>
         </div>
-        <div class="un-card">
+        <div class="un-card" data-map="Vibe Terapias Londrina Paraná">
           <div class="un-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div class="un-info"><div class="un-city">Paraná</div><div class="un-bairro">Londrina</div><div class="un-address">Rua [Endereço], XXX</div></div>
-          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Londrina" class="un-link" target="_blank" aria-label="Agendar Londrina">
+          <div class="un-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Londrina" class="un-link" target="_blank" aria-label="Agendar Londrina" onclick="event.stopPropagation()">
             <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
           </a>
+          <div class="un-map-wrap"><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src=""></iframe></div>
         </div>
-        <div class="un-card">
+        <div class="un-card" data-map="Vibe Terapias Balneário Camboriú Santa Catarina">
           <div class="un-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div class="un-info"><div class="un-city">Santa Catarina</div><div class="un-bairro">Balneário Camboriú</div><div class="un-address">Rua [Endereço], XXX</div></div>
-          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Balneário%20Camboriú" class="un-link" target="_blank" aria-label="Agendar Balneário Camboriú">
+          <div class="un-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Balneário%20Camboriú" class="un-link" target="_blank" aria-label="Agendar Balneário Camboriú" onclick="event.stopPropagation()">
             <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
           </a>
+          <div class="un-map-wrap"><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src=""></iframe></div>
         </div>
       </div>
     </div>
@@ -1240,6 +1272,23 @@
         slides[current].classList.add('active');
       }, 3500);
     })();
+
+    // Unidades — expand card to show map
+    document.querySelectorAll('.un-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const wasExpanded = card.classList.contains('expanded');
+        document.querySelectorAll('.un-card.expanded').forEach(c => {
+          if (c !== card) c.classList.remove('expanded');
+        });
+        card.classList.toggle('expanded', !wasExpanded);
+        if (!wasExpanded) {
+          const iframe = card.querySelector('.un-map-wrap iframe');
+          if (iframe && !iframe.src) {
+            iframe.src = 'https://www.google.com/maps?q=' + encodeURIComponent(card.dataset.map) + '&output=embed';
+          }
+        }
+      });
+    });
 
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
