@@ -247,33 +247,36 @@
       position: relative; overflow: hidden;
       background: var(--primary-dark);
     }
-    .hero-bg-img {
+    .hero-slideshow {
+      position: absolute; inset: 0; z-index: 0; overflow: hidden;
+    }
+    .hero-slide {
       position: absolute; inset: 0;
-      background-image: url('assets/Hero/hero-desktop.webp');
       background-size: cover;
       background-position: center right;
       background-repeat: no-repeat;
-      opacity: 0.8;
-      z-index: 0;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
     }
+    .hero-slide.active { opacity: 0.8; }
     /* fade esquerda→direita: sólido à esquerda, transparente à direita */
     .hero::before {
       content: '';
       position: absolute; inset: 0;
       background: linear-gradient(
         to right,
-        #2A1409 0%,
-        #2A1409 28%,
-        rgba(42,20,9,0.85) 45%,
-        rgba(42,20,9,0.40) 65%,
-        rgba(42,20,9,0.10) 82%,
+        #825044 0%,
+        #825044 28%,
+        rgba(130,80,68,0.85) 45%,
+        rgba(130,80,68,0.40) 65%,
+        rgba(130,80,68,0.10) 82%,
         transparent 100%
       );
       z-index: 1;
     }
     .hero-bg-color {
       position: absolute; inset: 0;
-      background: #2A1409;
+      background: #825044;
       z-index: -1;
     }
     .hero-content { position: relative; z-index: 2; width: 100%; }
@@ -602,7 +605,6 @@
       .header-inner { height: 68px; }
       .header-cta-desktop { display: flex; }
       .hero { align-items: center; padding-bottom: 56px; }
-      .hero-bg-img { background-image: url('assets/Hero/hero-desktop.webp'); }
       .hero-title { font-size: 2.8rem; }
       .hero-tagline { font-size: 1.4rem; }
       .hero-ctas { flex-direction: row; }
@@ -729,7 +731,18 @@
   <!-- HERO -->
   <section class="hero" id="hero">
     <div class="hero-bg-color"></div>
-    <div class="hero-bg-img" role="img" aria-label="Ambiente terapêutico Vibe Terapias"></div>
+    <div class="hero-slideshow" aria-hidden="true">
+      <div class="hero-slide active" style="background-image:url('assets/Hero/1.webp')"></div>
+      <div class="hero-slide" style="background-image:url('assets/Hero/2.webp')"></div>
+      <div class="hero-slide" style="background-image:url('assets/Hero/3.webp')"></div>
+      <div class="hero-slide" style="background-image:url('assets/Hero/4.webp')"></div>
+      <div class="hero-slide" style="background-image:url('assets/Hero/5.webp')"></div>
+      <div class="hero-slide" style="background-image:url('assets/Hero/6.webp')"></div>
+      <div class="hero-slide" style="background-image:url('assets/Hero/7.webp')"></div>
+      <div class="hero-slide" style="background-image:url('assets/Hero/8.webp')"></div>
+      <div class="hero-slide" style="background-image:url('assets/Hero/9.webp')"></div>
+      <div class="hero-slide" style="background-image:url('assets/Hero/10.webp')"></div>
+    </div>
     <div class="container">
       <div class="hero-content">
         <div class="hero-badge">Clínica Especializada em Dor</div>
@@ -850,6 +863,16 @@
             <div class="trat-title">Fibromialgia</div>
             <p class="trat-text">Protocolo específico para reduzir dores generalizadas, fadiga e melhorar a qualidade de vida.</p>
             <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20saber%20sobre%20tratamento%20de%20fibromialgia" class="trat-link" target="_blank">Quero esse tratamento →</a>
+          </div>
+        </div>
+        <div class="trat-card">
+          <div class="trat-img">
+            <img src="assets/Tratamentos/termal.webp" alt="Avaliação com Câmera Termal" loading="lazy">
+          </div>
+          <div class="trat-body">
+            <div class="trat-title">Avaliação com Câmera Termal</div>
+            <p class="trat-text">Essa ferramenta identifica áreas inflamadas e alterações na temperatura corporal, permitindo um diagnóstico detalhado e um tratamento personalizado.</p>
+            <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20saber%20sobre%20avalia%C3%A7%C3%A3o%20com%20c%C3%A2mera%20termal" class="trat-link" target="_blank">Quero esse tratamento →</a>
           </div>
         </div>
       </div>
@@ -1131,6 +1154,17 @@
   </footer>
 
   <script>
+    // Hero slideshow
+    (function() {
+      const slides = document.querySelectorAll('.hero-slide');
+      let current = 0;
+      setInterval(function() {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+      }, 4500);
+    })();
+
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
       header.classList.toggle('scrolled', window.scrollY > 8);
