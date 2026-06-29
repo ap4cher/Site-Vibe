@@ -468,14 +468,29 @@
     .dif-text { font-size: 0.84rem; color: rgba(255,255,255,0.58); line-height: 1.6; font-weight: 400; }
 
     /* ── NÚMEROS ── */
-    .numeros { background: var(--primary-light); padding: 52px 0; }
-    .numeros-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; text-align: center; }
+    .numeros { background: #974a00; padding: 0; overflow: hidden; }
+    .numeros-track {
+      display: inline-flex; align-items: center; gap: 0;
+      animation: numeros-scroll 28s linear infinite;
+      white-space: nowrap;
+    }
+    .numeros-item {
+      display: inline-flex; flex-direction: column; align-items: center;
+      padding: 20px 56px;
+    }
     .num-value {
       font-family: var(--font-display);
-      font-size: 2.6rem; font-weight: 400;
-      color: var(--primary-dark); line-height: 1; margin-bottom: 6px;
+      font-size: 2rem; font-weight: 400;
+      color: #fffad3; line-height: 1; letter-spacing: 0.02em;
     }
-    .num-label { font-size: 0.82rem; color: var(--text-medium); font-weight: 500; }
+    .num-label { font-size: 0.78rem; color: #fffad3; font-weight: 500; opacity: 0.75; margin-top: 3px; letter-spacing: 0.06em; text-transform: uppercase; }
+    .numeros-sep {
+      color: #fffad3; opacity: 0.3; font-size: 1.4rem; padding: 0 8px;
+    }
+    @keyframes numeros-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
 
     /* ── DEPOIMENTOS ── */
     .depoimentos { background: var(--white); }
@@ -965,13 +980,27 @@
 
   <!-- NÚMEROS -->
   <section class="numeros">
-    <div class="container">
-      <div class="numeros-grid">
-        <div><div class="num-value">+45 mil</div><div class="num-label">Atendimentos realizados</div></div>
-        <div><div class="num-value">8</div><div class="num-label">Unidades ativas</div></div>
-        <div><div class="num-value">4.9 ★</div><div class="num-label">Avaliação Google</div></div>
-        <div><div class="num-value">6+</div><div class="num-label">Condições tratadas</div></div>
+    <div class="numeros-track" aria-hidden="true">
+      <!-- bloco 1 -->
+      <div class="numeros-item"><div class="num-value">+45 mil</div><div class="num-label">Atendimentos realizados</div></div>
+      <span class="numeros-sep">|</span>
+      <div class="numeros-item">
+        <div class="num-value">8 Unidades</div>
+        <div class="num-label">SP | PR | SC</div>
       </div>
+      <span class="numeros-sep">|</span>
+      <div class="numeros-item"><div class="num-value">4.9 ★</div><div class="num-label">Avaliação Google</div></div>
+      <span class="numeros-sep">|</span>
+      <!-- bloco 2 (espelho para loop contínuo) -->
+      <div class="numeros-item"><div class="num-value">+45 mil</div><div class="num-label">Atendimentos realizados</div></div>
+      <span class="numeros-sep">|</span>
+      <div class="numeros-item">
+        <div class="num-value">8 Unidades</div>
+        <div class="num-label">SP | PR | SC</div>
+      </div>
+      <span class="numeros-sep">|</span>
+      <div class="numeros-item"><div class="num-value">4.9 ★</div><div class="num-label">Avaliação Google</div></div>
+      <span class="numeros-sep">|</span>
     </div>
   </section>
 
