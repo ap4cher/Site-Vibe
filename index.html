@@ -423,8 +423,14 @@
       text-decoration: none; min-height: 32px;
     }
 
+    /* ── BG COMPARTILHADO (Diferencial, Equipe, CTA) ── */
+    .bg-marrom {
+      background: linear-gradient(160deg, #5C2C14 0%, #3B1608 45%, #7D4535 100%);
+      color: white;
+    }
+
     /* ── DIFERENCIAL ── */
-    .diferencial { background: var(--primary-dark); color: white; }
+    .diferencial { color: white; }
     .diferencial .section-title { color: white; font-family: var(--font-display); }
     .diferencial .section-sub   { color: rgba(255,255,255,0.65); }
     .diferencial .section-label { color: var(--accent); }
@@ -529,16 +535,18 @@
     .vsl-nome { font-weight: 700; font-size: 1rem; color: var(--text-dark); }
 
     /* ── EQUIPE ── */
-    .equipe { background: var(--bg); }
+    .equipe { }
     .equipe-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; }
     .eq-card { background: white; border-radius: var(--radius); overflow: hidden; text-align: center; box-shadow: var(--shadow); }
     .eq-photo { height: 140px; background: var(--primary-light); display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .eq-photo svg { width: 52px; height: 52px; stroke: var(--primary); fill: none; stroke-width: 1.2; }
     .eq-photo img { width: 100%; height: 100%; object-fit: cover; }
     .eq-body { padding: 14px 10px 18px; }
-    .eq-name { font-family: var(--font-display); font-size: 0.92rem; font-weight: 400; color: var(--text-dark); margin-bottom: 3px; }
-    .eq-role { font-size: 0.75rem; color: var(--primary); font-weight: 500; margin-bottom: 5px; }
-    .eq-cred { font-size: 0.7rem; color: var(--text-light); line-height: 1.5; }
+    .eq-name { font-family: var(--font-display); font-size: 0.92rem; font-weight: 400; color: white; margin-bottom: 3px; }
+    .eq-role { font-size: 0.75rem; color: #fffad3; font-weight: 500; margin-bottom: 5px; }
+    .eq-cred { font-size: 0.7rem; color: rgba(255,255,255,0.55); line-height: 1.5; }
+    .equipe .section-title { color: white; }
+    .equipe .section-label { color: #fffad3; }
 
     /* ── UNIDADES ── */
     .unidades { background: var(--white); }
@@ -568,7 +576,6 @@
 
     /* ── CTA FINAL ── */
     .cta-final {
-      background: linear-gradient(160deg, #2A1409 0%, var(--primary-dark) 50%, var(--primary) 100%);
       padding: var(--space-section) 0; text-align: center;
       position: relative; overflow: hidden;
     }
@@ -649,6 +656,7 @@
       .trat-body { padding: 18px 20px; }
       .tratamentos-header .btn { width: auto; }
       .dep-card { flex: 0 0 60vw; }
+      .vsl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
       .unidades-grid { grid-template-columns: 1fr 1fr; }
       .num-value { font-size: 3rem; }
       .cta-btns { flex-direction: row; justify-content: center; }
@@ -693,7 +701,7 @@
       .trat-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
       .trat-img { height: 170px; }
       .numeros-grid { grid-template-columns: repeat(4, 1fr); }
-      .vsl-grid { flex-direction: row; gap: 28px; }
+      .vsl-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; }
       .num-value { font-size: 3.5rem; }
       .dep-scroll-wrap { overflow: visible; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin: 0; padding: 0; margin-top: 48px; }
       .dep-card { flex: none; max-width: none; scroll-snap-align: none; transition: box-shadow 0.3s; }
@@ -915,7 +923,7 @@
   </section>
 
   <!-- DIFERENCIAL -->
-  <section class="diferencial section">
+  <section class="diferencial section bg-marrom">
     <div class="container">
       <div class="diferencial-grid">
         <div class="diferencial-visual">
@@ -1058,12 +1066,29 @@
           </div>
         </div>
 
+        <!-- Card 4 -->
+        <div class="vsl-card">
+          <div class="vsl-video-wrap">
+            <!-- Substitua o src pelo caminho do seu vídeo: assets/Depoimentos/pescoco.mp4 -->
+            <video src="" poster="" preload="none"></video>
+            <div class="vsl-play-btn" onclick="playVSL(this)">
+              <div class="vsl-play-icon">
+                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="vsl-info">
+            <div class="vsl-tratamento">Tratamento de Dor no Pescoço</div>
+            <div class="vsl-nome">Ricardo Souza</div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
   <!-- EQUIPE -->
-  <section class="equipe section" id="equipe">
+  <section class="equipe section bg-marrom" id="equipe">
     <div class="container">
       <div class="text-center">
         <span class="section-label">Nossa equipe</span>
@@ -1169,7 +1194,7 @@
   </section>
 
   <!-- CTA FINAL -->
-  <section class="cta-final">
+  <section class="cta-final bg-marrom">
     <div class="container">
       <div class="cta-final-content">
         <span class="section-label">Dê o primeiro passo</span>
