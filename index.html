@@ -380,8 +380,9 @@
     }
 
     /* ── IMAGEM SESSÃO ── */
-    .sessao-img-wrap { width: 100%; line-height: 0; }
+    .sessao-img-wrap { width: 100%; line-height: 0; position: relative; }
     .sessao-img { width: 100%; height: auto; display: block; object-fit: cover; }
+    .sessao-arrow-svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
 
     /* ── TRATAMENTOS ── */
     .tratamentos {
@@ -880,6 +881,34 @@
   <!-- IMAGEM SESSÃO -->
   <div class="sessao-img-wrap">
     <img src="assets/sessao.webp" alt="Sessão Vibe Terapias" class="sessao-img">
+    <!-- Animated dotted arrow path -->
+    <svg class="sessao-arrow-svg" viewBox="0 0 1000 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <path id="sessao-path"
+          d="M 30,80
+             C 80,80 130,220 200,220
+             C 270,220 320,80 400,80
+             C 470,80 520,220 590,220
+             C 660,220 710,80 780,80
+             C 850,80 900,220 970,220"/>
+      </defs>
+      <!-- Dotted trail -->
+      <use href="#sessao-path"
+        fill="none"
+        stroke="#7D4535"
+        stroke-width="2.5"
+        stroke-dasharray="6 8"
+        stroke-linecap="round"
+        opacity="0.55"/>
+      <!-- Moving arrowhead -->
+      <g>
+        <polygon points="-7,-9 7,-9 0,8" fill="#7D4535" opacity="0.9">
+          <animateMotion dur="5s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#sessao-path"/>
+          </animateMotion>
+        </polygon>
+      </g>
+    </svg>
   </div>
 
   <!-- WAVE: top of tratamentos -->
