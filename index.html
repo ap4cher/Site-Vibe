@@ -559,25 +559,45 @@
 
     /* ── UNIDADES ── */
     .unidades { background: var(--bg); }
-    .unidades-layout { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
-    .un-group { border: 1.5px solid var(--border); border-radius: var(--radius); padding: 24px 22px; background: white; }
-    .un-group-city { font-size: 1.15rem; font-weight: 800; color: var(--primary); margin: 0 0 12px; }
-    .un-divider { border: none; border-top: 1.5px solid var(--border); margin: 0 0 20px; }
-    .un-units-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    .unidades-layout { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+    .un-card {
+      border: 1.5px solid var(--border); border-radius: var(--radius);
+      background: white; overflow: hidden; cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .un-card.open { border-color: var(--primary); }
+    .un-trigger {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 20px; gap: 12px; -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .un-trigger-left { display: flex; align-items: center; gap: 12px; }
+    .un-trigger-icon {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--primary-light); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .un-trigger-icon svg { width: 17px; height: 17px; stroke: var(--primary); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .un-trigger-name { font-weight: 800; font-size: 0.95rem; color: var(--text-dark); }
+    .un-trigger-count { font-size: 0.74rem; color: var(--text-medium); margin-top: 1px; }
+    .un-chevron { width: 20px; height: 20px; stroke: var(--primary); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; transition: transform 0.25s ease; }
+    .un-card.open .un-chevron { transform: rotate(180deg); }
+    .un-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .un-card.open .un-body { max-height: 800px; }
+    .un-body-inner { border-top: 1px solid var(--border); padding: 16px 20px 20px; display: grid; grid-template-columns: 1fr; gap: 16px; }
     .un-unit { display: flex; flex-direction: column; }
     .un-unit-top { display: flex; align-items: flex-start; gap: 8px; }
-    .un-unit-top svg { width: 17px; height: 17px; stroke: var(--primary); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 2px; }
-    .un-bairro { font-weight: 800; font-size: 0.92rem; color: var(--text-dark); }
-    .un-address { font-size: 0.8rem; color: var(--primary); line-height: 1.5; margin-top: 3px; padding-left: 25px; }
+    .un-unit-top svg { width: 16px; height: 16px; stroke: var(--primary); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 2px; }
+    .un-bairro { font-weight: 800; font-size: 0.88rem; color: var(--text-dark); }
+    .un-address { font-size: 0.78rem; color: var(--primary); line-height: 1.5; margin-top: 2px; padding-left: 24px; }
     .un-btn {
       display: inline-flex; align-items: center; align-self: flex-start;
-      margin-top: 12px; margin-left: 25px;
-      padding: 7px 18px; border: 1.5px solid var(--primary); border-radius: 50px;
-      font-size: 0.76rem; font-weight: 600; color: var(--primary);
+      margin-top: 10px; margin-left: 24px;
+      padding: 6px 16px; border: 1.5px solid var(--primary); border-radius: 50px;
+      font-size: 0.74rem; font-weight: 600; color: var(--primary);
       text-decoration: none; transition: all 0.2s; -webkit-tap-highlight-color: transparent;
     }
     .un-btn:active, .un-btn:hover { background: var(--primary); color: white; }
-    .un-cities-row { display: grid; grid-template-columns: 1fr; gap: 16px; }
 
     /* ── CTA FINAL ── */
     .cta-final {
@@ -665,8 +685,7 @@
       .tratamentos-header .btn { width: auto; max-width: none; }
       .dep-card { flex: 0 0 60vw; }
       .vsl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-      .un-units-grid { grid-template-columns: 1fr 1fr; }
-      .un-cities-row { grid-template-columns: 1fr 1fr; }
+      .un-body-inner { grid-template-columns: 1fr 1fr; }
       .num-value { font-size: 3rem; }
       .cta-btns { flex-direction: row; justify-content: center; }
       .cta-btns .btn { width: auto; }
@@ -719,7 +738,7 @@
       .equipe-grid { grid-template-columns: repeat(4, 1fr); }
       .eq-photo { height: 200px; }
       .eq-card:hover { transform: translateY(-4px); }
-      .un-cities-row { grid-template-columns: repeat(4, 1fr); }
+      .unidades-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
       .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
       .footer-links { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: row; text-align: left; }
@@ -857,7 +876,10 @@
         <span class="section-label" style="color:#974a00;">Nossos tratamentos</span>
         <h2 class="section-title" style="font-family:var(--font-display);color:#7d4535;">Para cada dor, um tratamento personalizado</h2>
         <a href="https://wa.me/55XXXXXXXXXXX?text=Olá!%20Quero%20conhecer%20todos%20os%20tratamentos."
-           class="btn btn-secondary" target="_blank" rel="noopener">Ver todos os tratamentos →</a>
+           class="btn btn-primary" target="_blank" rel="noopener">
+          <svg class="icon-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Agendar minha sessão
+        </a>
       </div>
       <div class="tratamentos-grid">
         <div class="trat-card">
@@ -980,6 +1002,7 @@
           </div>
           <div class="section-cta-center">
             <a href="https://wa.me/55XXXXXXXXXXX?text=Olá!%20Gostaria%20de%20agendar%20uma%20sessão%20na%20Vibe%20Terapias." class="btn btn-primary" target="_blank" rel="noopener">
+              <svg class="icon-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
               Agendar minha sessão
             </a>
           </div>
@@ -1093,7 +1116,8 @@
 
       </div>
       <div class="section-cta-center">
-        <a href="https://wa.me/55XXXXXXXXXXX?text=Olá!%20Gostaria%20de%20agendar%20uma%20sessão%20na%20Vibe%20Terapias." class="btn btn-secondary" target="_blank" rel="noopener">
+        <a href="https://wa.me/55XXXXXXXXXXX?text=Olá!%20Gostaria%20de%20agendar%20uma%20sessão%20na%20Vibe%20Terapias." class="btn btn-primary" target="_blank" rel="noopener">
+          <svg class="icon-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
           Agendar minha sessão
         </a>
       </div>
@@ -1113,76 +1137,124 @@
       <div class="unidades-layout">
 
         <!-- São Paulo -->
-        <div class="un-group">
-          <h3 class="un-group-city">São Paulo</h3>
-          <hr class="un-divider">
-          <div class="un-units-grid">
-            <div class="un-unit">
-              <div class="un-unit-top"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="un-bairro">Jardins</span></div>
-              <p class="un-address">Av. Brasil, 485 - Jardim Paulista, São Paulo - SP</p>
-              <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Jardins" class="un-btn" target="_blank" rel="noopener">Quero agendar para Jardins</a>
+        <div class="un-card">
+          <div class="un-trigger">
+            <div class="un-trigger-left">
+              <div class="un-trigger-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <div><div class="un-trigger-name">São Paulo</div><div class="un-trigger-count">4 unidades</div></div>
             </div>
-            <div class="un-unit">
-              <div class="un-unit-top"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="un-bairro">Pinheiros</span></div>
-              <p class="un-address">Edifício Thera Office Faria Lima - R. Amaro Cavalheiro, 347 - Andar 15, Sala 1519 - Pinheiros, São Paulo - SP</p>
-              <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Pinheiros" class="un-btn" target="_blank" rel="noopener">Quero agendar para Pinheiros</a>
-            </div>
-            <div class="un-unit">
-              <div class="un-unit-top"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="un-bairro">Moema</span></div>
-              <p class="un-address">Av. Rouxinol, 1041 - Sala 601 - Moema, São Paulo - SP</p>
-              <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Moema" class="un-btn" target="_blank" rel="noopener">Quero agendar para Moema</a>
-            </div>
-            <div class="un-unit">
-              <div class="un-unit-top"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="un-bairro">Av. Paulista</span></div>
-              <p class="un-address">Av. Paulista, 1337 - Andar 15, Sala 151 - Bela Vista, São Paulo - SP</p>
-              <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Paulista" class="un-btn" target="_blank" rel="noopener">Quero agendar para Av. Paulista</a>
+            <svg class="un-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="un-body">
+            <div class="un-body-inner">
+              <div class="un-unit">
+                <div class="un-unit-top"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="un-bairro">Jardins</span></div>
+                <p class="un-address">Av. Brasil, 485 - Jardim Paulista, São Paulo - SP</p>
+                <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Jardins" class="un-btn" target="_blank" rel="noopener" onclick="event.stopPropagation()">Quero agendar para Jardins</a>
+              </div>
+              <div class="un-unit">
+                <div class="un-unit-top"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="un-bairro">Pinheiros</span></div>
+                <p class="un-address">Edifício Thera Office Faria Lima - R. Amaro Cavalheiro, 347 - Andar 15, Sala 1519 - Pinheiros, São Paulo - SP</p>
+                <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Pinheiros" class="un-btn" target="_blank" rel="noopener" onclick="event.stopPropagation()">Quero agendar para Pinheiros</a>
+              </div>
+              <div class="un-unit">
+                <div class="un-unit-top"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="un-bairro">Moema</span></div>
+                <p class="un-address">Av. Rouxinol, 1041 - Sala 601 - Moema, São Paulo - SP</p>
+                <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Moema" class="un-btn" target="_blank" rel="noopener" onclick="event.stopPropagation()">Quero agendar para Moema</a>
+              </div>
+              <div class="un-unit">
+                <div class="un-unit-top"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="un-bairro">Av. Paulista</span></div>
+                <p class="un-address">Av. Paulista, 1337 - Andar 15, Sala 151 - Bela Vista, São Paulo - SP</p>
+                <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Paulista" class="un-btn" target="_blank" rel="noopener" onclick="event.stopPropagation()">Quero agendar para Av. Paulista</a>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Barueri | Campinas | Londrina | Balneário Camboriú -->
-        <div class="un-cities-row">
-          <div class="un-group">
-            <h3 class="un-group-city">Barueri</h3>
-            <hr class="un-divider">
-            <div class="un-unit">
-              <div class="un-unit-top"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="un-bairro">Alphaville</span></div>
-              <p class="un-address">Edifício Station Square - 1º Andar, Cj 14 - Alameda Madeira, 53 - Barueri - SP</p>
-              <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Alphaville" class="un-btn" target="_blank" rel="noopener">Quero agendar para Alphaville</a>
+        <!-- Barueri -->
+        <div class="un-card">
+          <div class="un-trigger">
+            <div class="un-trigger-left">
+              <div class="un-trigger-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <div><div class="un-trigger-name">Barueri</div><div class="un-trigger-count">1 unidade</div></div>
+            </div>
+            <svg class="un-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="un-body">
+            <div class="un-body-inner">
+              <div class="un-unit">
+                <div class="un-unit-top"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="un-bairro">Alphaville</span></div>
+                <p class="un-address">Edifício Station Square - 1º Andar, Cj 14 - Alameda Madeira, 53 - Barueri - SP</p>
+                <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Alphaville" class="un-btn" target="_blank" rel="noopener" onclick="event.stopPropagation()">Quero agendar para Alphaville</a>
+              </div>
             </div>
           </div>
-          <div class="un-group">
-            <h3 class="un-group-city">Campinas</h3>
-            <hr class="un-divider">
-            <div class="un-unit">
-              <div class="un-unit-top"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="un-bairro">Campinas</span></div>
-              <p class="un-address">Av. Dr. Heitor Penteado, 330 - Parque Taquaral, Campinas - SP</p>
-              <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Campinas" class="un-btn" target="_blank" rel="noopener">Quero agendar para Campinas</a>
+        </div>
+
+        <!-- Campinas -->
+        <div class="un-card">
+          <div class="un-trigger">
+            <div class="un-trigger-left">
+              <div class="un-trigger-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <div><div class="un-trigger-name">Campinas</div><div class="un-trigger-count">1 unidade</div></div>
+            </div>
+            <svg class="un-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="un-body">
+            <div class="un-body-inner">
+              <div class="un-unit">
+                <div class="un-unit-top"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="un-bairro">Parque Taquaral</span></div>
+                <p class="un-address">Av. Dr. Heitor Penteado, 330 - Parque Taquaral, Campinas - SP</p>
+                <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Campinas" class="un-btn" target="_blank" rel="noopener" onclick="event.stopPropagation()">Quero agendar para Campinas</a>
+              </div>
             </div>
           </div>
-          <div class="un-group">
-            <h3 class="un-group-city">Londrina</h3>
-            <hr class="un-divider">
-            <div class="un-unit">
-              <div class="un-unit-top"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="un-bairro">Londrina</span></div>
-              <p class="un-address">R. Alvarenga Peixoto, 26 - Lago Parque, Londrina - PR</p>
-              <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Londrina" class="un-btn" target="_blank" rel="noopener">Quero agendar para Londrina</a>
+        </div>
+
+        <!-- Londrina -->
+        <div class="un-card">
+          <div class="un-trigger">
+            <div class="un-trigger-left">
+              <div class="un-trigger-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <div><div class="un-trigger-name">Londrina</div><div class="un-trigger-count">1 unidade</div></div>
+            </div>
+            <svg class="un-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="un-body">
+            <div class="un-body-inner">
+              <div class="un-unit">
+                <div class="un-unit-top"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="un-bairro">Lago Parque</span></div>
+                <p class="un-address">R. Alvarenga Peixoto, 26 - Lago Parque, Londrina - PR</p>
+                <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Londrina" class="un-btn" target="_blank" rel="noopener" onclick="event.stopPropagation()">Quero agendar para Londrina</a>
+              </div>
             </div>
           </div>
-          <div class="un-group">
-            <h3 class="un-group-city">Balneário Camboriú</h3>
-            <hr class="un-divider">
-            <div class="un-unit">
-              <div class="un-unit-top"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="un-bairro">Balneário Camboriú</span></div>
-              <p class="un-address">Av. Brasil, 180 - Sala 2 - Barra Norte, Balneário Camboriú - SC</p>
-              <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Balneário%20Camboriú" class="un-btn" target="_blank" rel="noopener">Quero agendar para Balneário Camboriú</a>
+        </div>
+
+        <!-- Balneário Camboriú -->
+        <div class="un-card">
+          <div class="un-trigger">
+            <div class="un-trigger-left">
+              <div class="un-trigger-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <div><div class="un-trigger-name">Balneário Camboriú</div><div class="un-trigger-count">1 unidade</div></div>
+            </div>
+            <svg class="un-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="un-body">
+            <div class="un-body-inner">
+              <div class="un-unit">
+                <div class="un-unit-top"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="un-bairro">Barra Norte</span></div>
+                <p class="un-address">Av. Brasil, 180 - Sala 2 - Barra Norte, Balneário Camboriú - SC</p>
+                <a href="https://wa.me/55XXXXXXXXXXX?text=Quero%20agendar%20na%20unidade%20Balneário%20Camboriú" class="un-btn" target="_blank" rel="noopener" onclick="event.stopPropagation()">Quero agendar para Balneário Camboriú</a>
+              </div>
             </div>
           </div>
         </div>
 
       </div>
       <div class="section-cta-center">
-        <a href="https://wa.me/55XXXXXXXXXXX?text=Olá!%20Gostaria%20de%20agendar%20uma%20sessão%20na%20Vibe%20Terapias." class="btn btn-secondary" target="_blank" rel="noopener">
+        <a href="https://wa.me/55XXXXXXXXXXX?text=Olá!%20Gostaria%20de%20agendar%20uma%20sessão%20na%20Vibe%20Terapias." class="btn btn-primary" target="_blank" rel="noopener">
+          <svg class="icon-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
           Agendar minha sessão
         </a>
       </div>
@@ -1295,6 +1367,13 @@ const header = document.getElementById('header');
         depDots.forEach((d, i) => d.classList.toggle('active', i === index));
       }, { passive: true });
     }
+
+    // Unidades accordion
+    document.querySelectorAll('.un-card').forEach(card => {
+      card.querySelector('.un-trigger').addEventListener('click', () => {
+        card.classList.toggle('open');
+      });
+    });
 
     function playVSL(btn) {
       const wrap = btn.parentElement;
