@@ -381,12 +381,12 @@
 
     /* ── IMAGEM SESSÃO ── */
     .sessao-img-wrap { width: 100%; line-height: 0; position: relative; overflow: hidden; }
-    /* camada 1 - BG (z-index 1) */
+    /* camada 3 - Foto define a altura do container (fluxo normal) */
+    .sessao-img { position: relative; width: 100%; height: auto; display: block; z-index: 3; }
+    /* camada 1 - BG absoluta atrás */
     .sessao-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; display: block; }
-    /* camada 2 - Seta gif (z-index 2) */
-    .sessao-seta { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; pointer-events: none; }
-    /* camada 3 - Foto (z-index 3) */
-    .sessao-img { position: relative; width: 100%; height: auto; display: block; object-fit: cover; z-index: 3; }
+    /* camada 2 - Seta gif absoluta no meio */
+    .sessao-seta { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; pointer-events: none; display: block; }
 
     /* ── TRATAMENTOS ── */
     .tratamentos {
