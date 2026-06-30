@@ -383,10 +383,8 @@
     .sessao-img-wrap { width: 100%; line-height: 0; position: relative; overflow: hidden; }
     /* camada 1 - BG define a altura do container (fluxo normal) */
     .sessao-bg { position: relative; width: 100%; height: auto; display: block; z-index: 1; }
-    /* camada 2 - Seta gif absoluta sobre o BG */
-    .sessao-seta { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; pointer-events: none; display: block; }
-    /* camada 3 - Foto absoluta no topo */
-    .sessao-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: 3; }
+    /* camada 2 - Foto absoluta no topo */
+    .sessao-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: 2; }
 
     /* ── TRATAMENTOS ── */
     .tratamentos {
@@ -881,13 +879,11 @@
     </div>
   </div>
 
-  <!-- IMAGEM SESSÃO (3 camadas: BG → Seta → Foto) -->
+  <!-- IMAGEM SESSÃO (2 camadas: BG → Foto) -->
   <div class="sessao-img-wrap">
     <!-- camada 1: BG -->
     <img src="assets/Sessão/BG.webp" alt="" class="sessao-bg" aria-hidden="true">
-    <!-- camada 2: Seta animada -->
-    <img src="assets/Sessão/Seta.gif" alt="" class="sessao-seta" aria-hidden="true">
-    <!-- camada 3: Foto principal -->
+    <!-- camada 2: Foto principal -->
     <img src="assets/Sessão/sessao.webp" alt="Sessão Vibe Terapias" class="sessao-img">
   </div>
 
