@@ -380,9 +380,13 @@
     }
 
     /* ── IMAGEM SESSÃO ── */
-    .sessao-img-wrap { width: 100%; line-height: 0; position: relative; }
-    .sessao-img { width: 100%; height: auto; display: block; object-fit: cover; }
-    .sessao-arrow-svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+    .sessao-img-wrap { width: 100%; line-height: 0; position: relative; overflow: hidden; }
+    /* camada 1 - BG (z-index 1) */
+    .sessao-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; display: block; }
+    /* camada 2 - Seta gif (z-index 2) */
+    .sessao-seta { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; pointer-events: none; }
+    /* camada 3 - Foto (z-index 3) */
+    .sessao-img { position: relative; width: 100%; height: auto; display: block; object-fit: cover; z-index: 3; }
 
     /* ── TRATAMENTOS ── */
     .tratamentos {
@@ -874,37 +878,14 @@
     </div>
   </div>
 
-  <!-- IMAGEM SESSÃO -->
+  <!-- IMAGEM SESSÃO (3 camadas: BG → Seta → Foto) -->
   <div class="sessao-img-wrap">
-    <img src="assets/sessao.webp" alt="Sessão Vibe Terapias" class="sessao-img">
-    <!-- Animated dotted arrow path -->
-    <svg class="sessao-arrow-svg" viewBox="0 0 1000 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <path id="sessao-path"
-          d="M 30,80
-             C 80,80 130,220 200,220
-             C 270,220 320,80 400,80
-             C 470,80 520,220 590,220
-             C 660,220 710,80 780,80
-             C 850,80 900,220 970,220"/>
-      </defs>
-      <!-- Dotted trail -->
-      <use href="#sessao-path"
-        fill="none"
-        stroke="#7D4535"
-        stroke-width="2.5"
-        stroke-dasharray="6 8"
-        stroke-linecap="round"
-        opacity="0.55"/>
-      <!-- Moving arrowhead -->
-      <g>
-        <polygon points="-7,-9 7,-9 0,8" fill="#7D4535" opacity="0.9">
-          <animateMotion dur="5s" repeatCount="indefinite" rotate="auto">
-            <mpath href="#sessao-path"/>
-          </animateMotion>
-        </polygon>
-      </g>
-    </svg>
+    <!-- camada 1: BG -->
+    <img src="assets/Sessão/BG.webp" alt="" class="sessao-bg" aria-hidden="true">
+    <!-- camada 2: Seta animada -->
+    <img src="assets/Sessão/Seta.gif" alt="" class="sessao-seta" aria-hidden="true">
+    <!-- camada 3: Foto principal -->
+    <img src="assets/Sessão/sessao.webp" alt="Sessão Vibe Terapias" class="sessao-img">
   </div>
 
   <!-- TRATAMENTOS -->
