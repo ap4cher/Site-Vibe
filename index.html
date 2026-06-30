@@ -625,7 +625,16 @@
     .cta-btns .btn { width: 100%; }
 
     /* ── FOOTER ── */
-    .footer { background: #1C0C06; color: rgba(255,255,255,0.55); padding: 52px 0 28px; }
+    .footer {
+      background: #5c3e3e; color: rgba(255,255,255,0.55); padding: 52px 0 28px;
+      position: relative; overflow: hidden;
+    }
+    .footer::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('assets/Rodapé/Foto.webp') center/cover no-repeat;
+      opacity: 0.10; pointer-events: none; z-index: 0;
+    }
+    .footer > .container { position: relative; z-index: 1; }
     .footer-grid { display: flex; flex-direction: column; gap: 32px; margin-bottom: 36px; }
     .footer-logo { display: block; margin-bottom: 12px; }
     .footer-logo img { height: 44px; width: auto; }
@@ -1290,7 +1299,7 @@
       <div class="footer-grid">
         <div>
           <a href="/" class="footer-logo" aria-label="Vibe Terapias">
-            <img src="assets/Rodapé/logo-branco.webp" alt="Vibe Terapias — Clínica Especializada em Dor" width="160" height="44">
+            <img src="assets/Rodapé/Logo Branco.webp" alt="Vibe Terapias — Clínica Especializada em Dor" width="160" height="44">
           </a>
           <div class="footer-social">
             <a href="https://www.instagram.com/vibeterapias/" target="_blank" rel="noopener" aria-label="Instagram">
@@ -1301,9 +1310,9 @@
             </a>
           </div>
         </div>
-        <div><div class="footer-col-title">Tratamentos</div><div class="footer-links"><a href="#">Bruxismo</a><a href="#">Fibromialgia</a><a href="#">Coluna Sem Dor</a><a href="#">Pilates</a><a href="#">Pés e Pernas</a><a href="#">Pescoço e Crânio</a></div></div>
-        <div><div class="footer-col-title">Unidades</div><div class="footer-links"><a href="#">Moema</a><a href="#">Av. Paulista</a><a href="#">Pinheiros</a><a href="#">Jardins</a><a href="#">Alphaville</a><a href="#">Campinas</a><a href="#">Londrina</a><a href="#">Balneário Camboriú</a></div></div>
-        <div><div class="footer-col-title">Empresa</div><div class="footer-links"><a href="#">Sobre nós</a><a href="#">Blog</a><a href="#">Contato</a><a href="#">Privacidade</a></div></div>
+        <div><div class="footer-col-title">Tratamentos</div><div class="footer-links"><a href="#tratamentos">Bruxismo</a><a href="#tratamentos">Fibromialgia</a><a href="#tratamentos">Coluna Sem Dor</a><a href="#tratamentos">Pilates</a><a href="#tratamentos">Pés e Pernas</a><a href="#tratamentos">Pescoço e Crânio</a></div></div>
+        <div><div class="footer-col-title">Unidades</div><div class="footer-links"><a href="#unidades">Moema</a><a href="#unidades">Av. Paulista</a><a href="#unidades">Pinheiros</a><a href="#unidades">Jardins</a><a href="#unidades">Alphaville</a><a href="#unidades">Campinas</a><a href="#unidades">Londrina</a><a href="#unidades">Balneário Camboriú</a></div></div>
+        <div><div class="footer-col-title">Empresa</div><div class="footer-links"><a href="#sobre">Sobre nós</a><a href="#">Blog</a><a href="#">Contato</a><a href="#depoimentos">Depoimentos</a></div></div>
       </div>
       <div class="footer-bottom">
         <p>© 2025 Vibe Terapias. Todos os direitos reservados.</p>
