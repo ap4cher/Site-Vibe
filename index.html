@@ -233,12 +233,12 @@
       z-index: 99; gap: 4px;
     }
     .nav-mobile.open { display: flex; }
-    .nav-mobile a {
+    .nav-mobile a:not(.btn) {
       font-size: 1rem; font-weight: 500; color: var(--text-medium);
       padding: 13px 0; border-bottom: 1px solid var(--border); display: block;
     }
-    .nav-mobile a:last-child { border-bottom: none; }
-    .nav-mobile .btn { margin-top: 16px; width: 100%; }
+    .nav-mobile a:not(.btn):last-of-type { border-bottom: none; }
+    .nav-mobile .btn { margin-top: 16px; width: 100%; display: flex; }
 
     /* ── HERO ── */
     .hero {
