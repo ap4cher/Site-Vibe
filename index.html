@@ -31,7 +31,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vibe Terapias — Clínica Especializada em Dor</title>
-  <meta name="description" content="Não somos um SPA. Somos a solução para as suas dores. Tratamentos terapêuticos especializados em bruxismo, fibromialgia, coluna, pilates e mais. 8 unidades em SP, PR e SC.">
+  <meta name="description" content="Não somos um SPA. Somos a solução para as suas dores. Tratamentos terapêuticos especializados em bruxismo, fibromialgia, coluna, pilates e mais. 9 unidades em SP, PR, SC e RJ.">
   <style>
     @font-face {
       font-family: 'CharlotteVeronica';
@@ -238,6 +238,10 @@
       padding: 13px 0; border-bottom: 1px solid var(--border); display: block;
     }
     .nav-mobile a:not(.btn):last-of-type { border-bottom: none; }
+    .nav-mobile a.nav-mobile-sub {
+      font-size: 0.88rem; color: var(--text-light);
+      padding: 10px 0 10px 16px; border-bottom: none;
+    }
     .nav-mobile .btn { margin-top: 16px; width: 100%; display: flex; }
 
     /* ── HERO ── */
@@ -408,6 +412,7 @@
     .trat-card {
       background: white; border-radius: var(--radius); overflow: hidden;
       box-shadow: var(--shadow); display: flex; flex-direction: row; align-items: stretch;
+      scroll-margin-top: 88px;
     }
     .trat-img {
       width: 110px; flex-shrink: 0;
@@ -733,6 +738,30 @@
       }
       .nav a:hover { color: var(--primary); }
       .nav a:hover::after { transform: scaleX(1); }
+      .nav-dropdown { position: relative; }
+      .nav-dropdown > a { display: inline-flex; align-items: center; gap: 4px; }
+      .nav-dropdown-chevron { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.2s ease; }
+      .nav-dropdown:hover .nav-dropdown-chevron { transform: rotate(180deg); }
+      .nav-dropdown-menu {
+        position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+        margin-top: 14px; background: white; border-radius: 12px;
+        box-shadow: var(--shadow-lg); border: 1px solid var(--border);
+        padding: 8px; min-width: 220px;
+        opacity: 0; visibility: hidden; pointer-events: none;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        transform: translateX(-50%) translateY(4px);
+      }
+      .nav-dropdown:hover .nav-dropdown-menu {
+        opacity: 1; visibility: visible; pointer-events: auto;
+        transform: translateX(-50%) translateY(0);
+      }
+      .nav-dropdown-menu a {
+        display: block; padding: 10px 14px; border-radius: 8px;
+        font-size: 0.85rem; font-weight: 500; color: var(--text-medium);
+        white-space: nowrap;
+      }
+      .nav-dropdown-menu a::after { display: none; }
+      .nav-dropdown-menu a:hover { background: var(--primary-light); color: var(--primary); }
       .hamburger { display: none; }
       .hero { align-items: center; padding-bottom: 72px; }
       .hero-content { max-width: 660px; }
@@ -782,7 +811,15 @@
         </a>
         <nav class="nav">
           <a href="#sobre">Sobre Nós</a>
-          <a href="#tratamentos">Tratamentos</a>
+          <div class="nav-dropdown">
+            <a href="#tratamentos">Tratamentos <svg class="nav-dropdown-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></a>
+            <div class="nav-dropdown-menu">
+              <a href="#bruxismo">Bruxismo</a>
+              <a href="#pescoco">Dor no Pescoço</a>
+              <a href="#pes-pernas">Dores nos Pés e Pernas</a>
+              <a href="#coluna">Dor na Coluna</a>
+            </div>
+          </div>
           <a href="#depoimentos">Depoimentos</a>
           <a href="#unidades">Unidades</a>
         </nav>
@@ -799,6 +836,10 @@
     <nav class="nav-mobile" id="nav-mobile">
       <a href="#sobre">Sobre Nós</a>
       <a href="#tratamentos">Tratamentos</a>
+      <a href="#bruxismo" class="nav-mobile-sub">Bruxismo</a>
+      <a href="#pescoco" class="nav-mobile-sub">Dor no Pescoço</a>
+      <a href="#pes-pernas" class="nav-mobile-sub">Dores nos Pés e Pernas</a>
+      <a href="#coluna" class="nav-mobile-sub">Dor na Coluna</a>
       <a href="#depoimentos">Depoimentos</a>
       <a href="#unidades">Unidades</a>
       <a href="https://api.whatsapp.com/send/?phone=554384137634&text=Ol%C3%A1,+tudo+bem?+Gostaria+de+verificar+a+disponibilidade+para+um+agendamento"
@@ -841,14 +882,13 @@
             <svg class="icon-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
             Agendar minha sessão
           </a>
-          <a href="#tratamentos" class="btn btn-outline-orange">Ver tratamentos →</a>
         </div>
         <div class="hero-stats">
-          <div class="hero-stat"><div class="hero-stat-num">+45 mil</div><div class="hero-stat-label">Atendimentos realizados</div></div>
+          <div class="hero-stat"><div class="hero-stat-num">+60 mil</div><div class="hero-stat-label">Atendimentos realizados</div></div>
           <div class="hero-stat-divider"></div>
           <div class="hero-stat">
-            <div class="hero-stat-num">8 Unidades</div>
-            <div class="hero-stat-label"><span class="stat-sub">SP | PR | SC</span></div>
+            <div class="hero-stat-num">9 Unidades</div>
+            <div class="hero-stat-label"><span class="stat-sub">SP | PR | SC | RJ</span></div>
           </div>
           <div class="hero-stat-divider"></div>
           <div class="hero-stat"><div class="hero-stat-num">4.9 ★</div><div class="hero-stat-label">Google</div></div>
@@ -881,14 +921,6 @@
     </div>
   </div>
 
-  <!-- BANNER SESSÃO -->
-  <div class="sessao-img-wrap">
-    <picture>
-      <source srcset="assets/Sessão/sessao-mobile.webp" media="(max-width: 639px)">
-      <img src="assets/Sessão/BG.webp" alt="Sessão Vibe Terapias" class="sessao-bg">
-    </picture>
-  </div>
-
   <!-- TRATAMENTOS -->
   <section class="tratamentos section" id="tratamentos">
     <div class="container">
@@ -897,7 +929,7 @@
         <h2 class="section-title" style="font-family:var(--font-display);color:#7d4535;">Para cada dor, um tratamento personalizado</h2>
       </div>
       <div class="tratamentos-grid">
-        <div class="trat-card">
+        <div class="trat-card" id="pescoco">
           <div class="trat-img">
             <img src="assets/Tratamentos/pescoco.webp" alt="Dor no Pescoço" loading="lazy">
             <span class="trat-tag">Mais Procurado</span>
@@ -908,7 +940,7 @@
             <a href="https://api.whatsapp.com/send/?phone=554384137634&text=Ol%C3%A1,+tudo+bem?+Gostaria+de+verificar+a+disponibilidade+para+um+agendamento" class="trat-link" target="_blank">Quero esse tratamento →</a>
           </div>
         </div>
-        <div class="trat-card">
+        <div class="trat-card" id="pes-pernas">
           <div class="trat-img">
             <img src="assets/Tratamentos/pes-pernas.webp" alt="Dores nos Pés e Pernas" loading="lazy">
           </div>
@@ -918,7 +950,7 @@
             <a href="https://api.whatsapp.com/send/?phone=554384137634&text=Ol%C3%A1,+tudo+bem?+Gostaria+de+verificar+a+disponibilidade+para+um+agendamento" class="trat-link" target="_blank">Quero esse tratamento →</a>
           </div>
         </div>
-        <div class="trat-card">
+        <div class="trat-card" id="coluna">
           <div class="trat-img">
             <img src="assets/Tratamentos/coluna.webp" alt="Dor na Coluna" loading="lazy">
           </div>
@@ -928,7 +960,7 @@
             <a href="https://api.whatsapp.com/send/?phone=554384137634&text=Ol%C3%A1,+tudo+bem?+Gostaria+de+verificar+a+disponibilidade+para+um+agendamento" class="trat-link" target="_blank">Quero esse tratamento →</a>
           </div>
         </div>
-        <div class="trat-card">
+        <div class="trat-card" id="bruxismo">
           <div class="trat-img">
             <img src="assets/Tratamentos/bruxismo.webp" alt="Bruxismo" loading="lazy">
           </div>
@@ -1018,7 +1050,7 @@
               <div class="dif-icon">
                 <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
-              <div><div class="dif-title">8 unidades: SP | PR | SC</div><div class="dif-text">4 Unidades em SP (Jardins, Pinheiros, Av. Paulista, Moema,<br>Alphaville (Barueri), Campinas, Londrina e Balneário Camboriú.</div></div>
+              <div><div class="dif-title">9 unidades: SP | PR | SC | RJ</div><div class="dif-text">4 Unidades em SP (Jardins, Pinheiros, Av. Paulista, Moema),<br>Alphaville (Barueri), Campinas, Londrina, Balneário Camboriú e Rio de Janeiro.</div></div>
             </div>
           </div>
           <div class="section-cta-center">
@@ -1036,27 +1068,35 @@
   <section class="numeros">
     <div class="numeros-track" aria-hidden="true">
       <!-- bloco 1 -->
-      <div class="numeros-item"><div class="num-value">+45 mil</div><div class="num-label">Atendimentos realizados</div></div>
+      <div class="numeros-item"><div class="num-value">+60 mil</div><div class="num-label">Atendimentos realizados</div></div>
       <span class="numeros-sep">|</span>
       <div class="numeros-item">
-        <div class="num-value">8 Unidades</div>
-        <div class="num-label">SP | PR | SC</div>
+        <div class="num-value">9 Unidades</div>
+        <div class="num-label">SP | PR | SC | RJ</div>
       </div>
       <span class="numeros-sep">|</span>
       <div class="numeros-item"><div class="num-value">4.9 ★</div><div class="num-label">Avaliação Google</div></div>
       <span class="numeros-sep">|</span>
       <!-- bloco 2 (espelho para loop contínuo) -->
-      <div class="numeros-item"><div class="num-value">+45 mil</div><div class="num-label">Atendimentos realizados</div></div>
+      <div class="numeros-item"><div class="num-value">+60 mil</div><div class="num-label">Atendimentos realizados</div></div>
       <span class="numeros-sep">|</span>
       <div class="numeros-item">
-        <div class="num-value">8 Unidades</div>
-        <div class="num-label">SP | PR | SC</div>
+        <div class="num-value">9 Unidades</div>
+        <div class="num-label">SP | PR | SC | RJ</div>
       </div>
       <span class="numeros-sep">|</span>
       <div class="numeros-item"><div class="num-value">4.9 ★</div><div class="num-label">Avaliação Google</div></div>
       <span class="numeros-sep">|</span>
     </div>
   </section>
+
+  <!-- BANNER SESSÃO -->
+  <div class="sessao-img-wrap">
+    <picture>
+      <source srcset="assets/Sessão/sessao-mobile.webp" media="(max-width: 639px)">
+      <img src="assets/Sessão/BG.webp" alt="Sessão Vibe Terapias" class="sessao-bg">
+    </picture>
+  </div>
 
   <!-- DEPOIMENTOS -->
   <section class="depoimentos section" id="depoimentos">
@@ -1129,7 +1169,7 @@
       <div class="text-center">
         <span class="section-label" style="color:#974a00;">Onde estamos</span>
         <h2 class="section-title">Perto de você</h2>
-        <p class="section-sub">8 unidades em São Paulo, Londrina e Balneário Camboriú.</p>
+        <p class="section-sub">9 unidades em São Paulo, Paraná, Santa Catarina e Rio de Janeiro.</p>
       </div>
       <div class="unidades-layout">
 
@@ -1248,6 +1288,26 @@
           </div>
         </div>
 
+        <!-- Rio de Janeiro -->
+        <div class="un-card">
+          <div class="un-trigger">
+            <div class="un-trigger-left">
+              <div class="un-trigger-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <div><div class="un-trigger-name">Rio de Janeiro-RJ</div><div class="un-trigger-count">1 unidade</div></div>
+            </div>
+            <svg class="un-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="un-body">
+            <div class="un-body-inner">
+              <div class="un-unit">
+                <div class="un-unit-top"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="un-bairro">[Bairro Rio de Janeiro]</span></div>
+                <p class="un-address">[Endereço completo a confirmar] - Rio de Janeiro - RJ</p>
+                <a href="https://api.whatsapp.com/send/?phone=554384137634&text=Ol%C3%A1,+tudo+bem?+Gostaria+de+verificar+a+disponibilidade+para+um+agendamento" class="un-btn" target="_blank" rel="noopener" onclick="event.stopPropagation()">Quero agendar para Rio de Janeiro</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
       <div class="section-cta-center">
         <a href="https://api.whatsapp.com/send/?phone=554384137634&text=Ol%C3%A1,+tudo+bem?+Gostaria+de+verificar+a+disponibilidade+para+um+agendamento" class="btn btn-primary" target="_blank" rel="noopener">
@@ -1299,7 +1359,7 @@
           </div>
         </div>
         <div><div class="footer-col-title">Tratamentos</div><div class="footer-links"><a href="#tratamentos">Bruxismo</a><a href="#tratamentos">Fibromialgia</a><a href="#tratamentos">Coluna Sem Dor</a><a href="#tratamentos">Pilates</a><a href="#tratamentos">Pés e Pernas</a><a href="#tratamentos">Pescoço e Crânio</a></div></div>
-        <div><div class="footer-col-title">Unidades</div><div class="footer-links"><a href="#unidades">Moema</a><a href="#unidades">Av. Paulista</a><a href="#unidades">Pinheiros</a><a href="#unidades">Jardins</a><a href="#unidades">Alphaville</a><a href="#unidades">Campinas</a><a href="#unidades">Londrina</a><a href="#unidades">Balneário Camboriú</a></div></div>
+        <div><div class="footer-col-title">Unidades</div><div class="footer-links"><a href="#unidades">Moema</a><a href="#unidades">Av. Paulista</a><a href="#unidades">Pinheiros</a><a href="#unidades">Jardins</a><a href="#unidades">Alphaville</a><a href="#unidades">Campinas</a><a href="#unidades">Londrina</a><a href="#unidades">Balneário Camboriú</a><a href="#unidades">Rio de Janeiro</a></div></div>
         <div><div class="footer-col-title">Empresa</div><div class="footer-links"><a href="#sobre">Sobre Nós</a><a href="#depoimentos">Depoimentos</a><a href="#">Contato</a><a href="#">Blog</a></div></div>
       </div>
       <div class="footer-bottom">
